@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/dashBoard">
+
+    <fragment
+        android:id="@+id/dashBoard"
+        android:name="com.lefg095.misantlaapp.ui.DashboardFragment"
+        android:label="Dashboard"
+        tools:layout="@layout/fragment_dashboard">
+
+        <action
+            android:id="@+id/action_to_list_business"
+            app:destination="@+id/listBusiness"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/listBusiness"
+        android:name="com.lefg095.misantlaapp.ui.ListBusinessFragment"
+        android:label="List Business"
+        tools:layout="@layout/fragment_listbusiness">
+
+        <action
+            android:id="@+id/action_to_detail_business"
+            app:destination="@+id/detailBusiness"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/detailBusiness"
+        android:name="com.lefg095.misantlaapp.ui.BusinessDetailFragment"
+        android:label="DetailBusiness"
+        tools:layout="@layout/fragment_businessdetail"/>
+</navigation>
