@@ -1,4 +1,4 @@
-package com.lefg095.misantlaapp.ui
+package com.lefg095.misantlaapp.ui.dashboard
 
 import android.view.LayoutInflater
 import android.view.View

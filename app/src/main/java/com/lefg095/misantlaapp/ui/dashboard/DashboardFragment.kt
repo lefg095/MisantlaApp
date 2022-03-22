@@ -1,4 +1,4 @@
-package com.lefg095.misantlaapp.ui
+package com.lefg095.misantlaapp.ui.dashboard
 
 import android.os.Bundle
 import android.util.Log
@@ -7,7 +7,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
+import androidx.navigation.NavGraphNavigator
+import androidx.navigation.Navigation
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.NavigationUI
 import com.google.android.gms.ads.AdRequest
 import com.google.firebase.firestore.FirebaseFirestore
 import com.lefg095.misantlaapp.R
@@ -15,14 +21,11 @@ import com.lefg095.misantlaapp.databinding.FragmentDashboardBinding
 import com.lefg095.misantlaapp.model.SliderData
 import com.smarteist.autoimageslider.SliderView
 
-class DashboardFragment : Fragment() {
+class DashboardFragment(
+) : Fragment(){
     private lateinit var binding: FragmentDashboardBinding
     private val db = FirebaseFirestore.getInstance()
 
-    // Urls of our images.
-    val url1 = "https://www.geeksforgeeks.org/wp-content/uploads/gfg_200X200-1.png"
-    val url2 = "https://qphs.fs.quoracdn.net/main-qimg-8e203d34a6a56345f86f1a92570557ba.webp"
-    val url3 = "https://bizzbucket.co/wp-content/uploads/2020/08/Life-in-The-Metro-Blog-Title-22.png"
     var url = ""
     var nameBusiness = ""
 
@@ -37,7 +40,6 @@ class DashboardFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         loadAdds()
 
         val sliderDataArrayList: ArrayList<SliderData> = arrayListOf()
@@ -63,6 +65,21 @@ class DashboardFragment : Fragment() {
 
         binding.btn1.setOnClickListener {
             showListBusiness("turismo")
+        }
+        binding.btn2.setOnClickListener {
+            showListBusiness("comida")
+        }
+        binding.btn3.setOnClickListener {
+            showListBusiness("boutiques")
+        }
+        binding.btn4.setOnClickListener {
+            showListBusiness("abarrotes")
+        }
+        binding.btn5.setOnClickListener {
+            showListBusiness("escuelas")
+        }
+        binding.btn6.setOnClickListener {
+            showListBusiness("servicios")
         }
 
     }

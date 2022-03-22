@@ -7,8 +7,8 @@
 
     <fragment
         android:id="@+id/dashBoard"
-        android:name="com.lefg095.misantlaapp.ui.DashboardFragment"
-        android:label="Dashboard"
+        android:name="com.lefg095.misantlaapp.ui.dashboard.DashboardFragment"
+        android:label="MisantlaApp"
         tools:layout="@layout/fragment_dashboard">
 
         <action
@@ -18,8 +18,7 @@
 
     <fragment
         android:id="@+id/listBusiness"
-        android:name="com.lefg095.misantlaapp.ui.ListBusinessFragment"
-        android:label="List Business"
+        android:name="com.lefg095.misantlaapp.ui.business.ListBusinessFragment"
         tools:layout="@layout/fragment_listbusiness">
 
         <action
@@ -29,7 +28,17 @@
 
     <fragment
         android:id="@+id/detailBusiness"
-        android:name="com.lefg095.misantlaapp.ui.BusinessDetailFragment"
-        android:label="DetailBusiness"
-        tools:layout="@layout/fragment_businessdetail"/>
+        android:name="com.lefg095.misantlaapp.ui.business.BusinessDetailFragment"
+        tools:layout="@layout/fragment_businessdetail"
+        >
+        <action
+            android:id="@+id/action_to_img_screens"
+            app:destination="@+id/imgScreen"/>
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/imgScreen"
+        android:name="com.lefg095.misantlaapp.ui.business.ScreenImgFragment"
+        tools:layout="@layout/fragment_img_all_screen"/>
 </navigation>
