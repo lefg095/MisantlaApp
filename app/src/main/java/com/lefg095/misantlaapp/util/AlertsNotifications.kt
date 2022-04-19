@@ -62,3 +62,20 @@ fun alertWarning(context: Context, title: String, mensaje: String) {
     btn_ok.setTextColor(context.resources.getColor(R.color.orange))
 
 }
+
+fun alertAuth(context: Context) {
+    val builder = AlertDialog.Builder(context)
+
+    builder
+        .setIcon(R.drawable.ic_dont)
+        .setPositiveButton("OK", { dialogInterface, i ->
+        })
+        .setTitle("Error")
+        .setMessage("Se ha producido un error autenticando al usuario" )
+    val dialog = builder.create()
+    dialog.show()
+
+    val btn_ok = dialog.getButton(DialogInterface.BUTTON_POSITIVE)
+    btn_ok.setTextColor(context.resources.getColor(R.color.red))
+
+}

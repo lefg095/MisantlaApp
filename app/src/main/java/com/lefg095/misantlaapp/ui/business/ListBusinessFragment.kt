@@ -6,11 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.firestore.FirebaseFirestore
-import com.lefg095.misantlaapp.R
 import com.lefg095.misantlaapp.databinding.FragmentListbusinessBinding
 import com.lefg095.misantlaapp.model.BusinessData
 import com.lefg095.misantlaapp.util.alertError

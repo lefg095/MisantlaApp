@@ -15,5 +15,6 @@
     <color name="green">#22F60B</color>
     <color name="green2">#48954A</color>
     <color name="orange">#FF9800</color>
-    <color name="blue_4ever">#005AB4</color>
+    <!--color name="blue_4ever">#005AB4</color-->
+    <color name="blue_4ever">#1D594E</color>
 </resources>

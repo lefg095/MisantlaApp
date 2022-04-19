@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/it_config"
+            android:icon="@drawable/ic_config"
+            android:title="Configuracion"/>
+        <item
+            android:id="@+id/it_contac"
+            android:icon="@drawable/ic_contacto"
+            android:title="Contacto"/>
+        <item
+            android:id="@+id/it_about_this"
+            android:icon="@drawable/ic_acerca"
+            android:title="Acerca de"/>
+
+    </group>
+
+    <item android:title="Más">
+        <menu>
+
+            <item
+                android:id="@+id/it_close_session"
+                android:icon="@drawable/ic_cerrar_sesion"
+                android:title="Cerrar sesión"/>
+        </menu>
+    </item>
+
+</menu>

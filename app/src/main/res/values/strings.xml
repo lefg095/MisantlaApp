@@ -2,4 +2,13 @@
     <string name="app_name">MisantlaApp</string>
     <string name="banner_ad_unit_id">ca-app-pub-3940256099942544/6300978111</string>
     <string name="text_dashboard">Encontraras lugares que visitar en Misantla de manera turistica o para adquirir tu producto o servicio...</string>
+    <string name="open">open</string>
+    <string name="close">close</string>
+    <string name="prefs_file">com.lefg095.misantlaapp.PREFERENCE_FILE_KEY</string>
+
+    <string name="facebook_app_id">515619450222329</string>
+    <string name="fb_login_protocol_scheme">fb1234</string>
+    <string name="facebook_client_token">14e83a58cc0029b76591972545094e2f</string>
+
+
 </resources>

@@ -6,6 +6,7 @@
     app:startDestination="@id/dashBoard">
 
     <fragment
+
         android:id="@+id/dashBoard"
         android:name="com.lefg095.misantlaapp.ui.dashboard.DashboardFragment"
         android:label="MisantlaApp"
