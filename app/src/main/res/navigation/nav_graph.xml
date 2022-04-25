@@ -25,6 +25,10 @@
         <action
             android:id="@+id/action_to_detail_business"
             app:destination="@+id/detailBusiness"/>
+
+        <action
+            android:id="@+id/action_to_add_places"
+            app:destination="@+id/add_places"/>
     </fragment>
 
     <fragment
@@ -42,4 +46,9 @@
         android:id="@+id/imgScreen"
         android:name="com.lefg095.misantlaapp.ui.business.ScreenImgFragment"
         tools:layout="@layout/fragment_img_all_screen"/>
+
+    <fragment
+        android:id="@+id/add_places"
+        android:name="com.lefg095.misantlaapp.ui.business.AddPlacesFragment"
+        tools:layout="@layout/fragment_add_places"/>
 </navigation>

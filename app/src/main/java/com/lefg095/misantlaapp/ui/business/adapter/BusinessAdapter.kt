@@ -1,4 +1,4 @@
-package com.lefg095.misantlaapp.ui.business
+package com.lefg095.misantlaapp.ui.business.adapter
 
 import android.view.LayoutInflater
 import android.view.View

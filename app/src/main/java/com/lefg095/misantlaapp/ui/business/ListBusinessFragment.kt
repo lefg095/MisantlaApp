@@ -6,10 +6,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.firestore.FirebaseFirestore
+import com.lefg095.misantlaapp.R
 import com.lefg095.misantlaapp.databinding.FragmentListbusinessBinding
 import com.lefg095.misantlaapp.model.BusinessData
+import com.lefg095.misantlaapp.ui.business.adapter.BusinessAdapter
 import com.lefg095.misantlaapp.util.alertError
 import com.lefg095.misantlaapp.util.alertWarning
 
@@ -102,6 +105,9 @@ class ListBusinessFragment : Fragment() {
         adapter = BusinessAdapter(businnesArrayList, businessType, numero_reporte)
         binding.rvBusinnessList.adapter = adapter
         binding.fbAdd.visibility = View.VISIBLE
+        binding.fbAdd.setOnClickListener {
+            view?.findNavController()?.navigate(R.id.add_places)
+        }
         hideLoading(3.0)
     }
 }
