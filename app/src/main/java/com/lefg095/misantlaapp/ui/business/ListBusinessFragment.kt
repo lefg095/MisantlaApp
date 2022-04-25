@@ -36,29 +36,40 @@ class ListBusinessFragment : Fragment() {
 
     fun getData(businessType: String) {
         val businessDataArrayList: ArrayList<BusinessData> = arrayListOf()
-
+        var numero_reporte = ""
+        db.collection("dataApp").get().addOnSuccessListener { result ->
+            Log.e("Firestore_dataApp_", "$result")
+            for (documento in result) {
+                numero_reporte = "${documento.data.get("numeroReporte")}"
+            }
+        }.addOnFailureListener { exception ->
+            Log.e("Firestore_dataApp_", "Error al optener datos")
+        }
         db.collection(businessType).get().addOnSuccessListener { result ->
             for (documento in result) {
-                businessDataArrayList.add(
-                    BusinessData(
-                        descripcion = "${documento.data.get("descripcion")}",
-                        nombre = (documento.data.get("nombre")?: "").toString(),
-                        ubicacion = (documento.data.get("ubicacion")?: "").toString(),
-                        url_img = (documento.data.get("url_img")?: "").toString(),
-                        desLong = (documento.data.get("descLong")?: "").toString(),
-                        horario = (documento.data.get("horario")?: "").toString(),
-                        telefono = (documento.data.get("telefono")?: "").toString(),
-                        whatsapp = (documento.data.get("whatsapp")?: "").toString(),
-                        facebook = (documento.data.get("facebook")?: "").toString(),
-                        instagram = (documento.data.get("instagram")?: "").toString(),
-                        servLocal = (documento.data.get("servLocal")?: "").toString(),
-                        servEntrega = (documento.data.get("servEntrega")?: "").toString(),
-                        catalogo_menu = (documento.data.get("productos")?: "").toString()
+                val mostrar = documento.data.get("mostrar")
+                if (mostrar == "1") {
+                    businessDataArrayList.add(
+                        BusinessData(
+                            descripcion = "${documento.data.get("descripcion")}",
+                            nombre = (documento.data.get("nombre") ?: "").toString(),
+                            ubicacion = (documento.data.get("ubicacion") ?: "").toString(),
+                            url_img = (documento.data.get("url_img") ?: "").toString(),
+                            desLong = (documento.data.get("descLong") ?: "").toString(),
+                            horario = (documento.data.get("horario") ?: "").toString(),
+                            telefono = (documento.data.get("telefono") ?: "").toString(),
+                            whatsapp = (documento.data.get("whatsapp") ?: "").toString(),
+                            facebook = (documento.data.get("facebook") ?: "").toString(),
+                            instagram = (documento.data.get("instagram") ?: "").toString(),
+                            servLocal = (documento.data.get("servLocal") ?: "").toString(),
+                            servEntrega = (documento.data.get("servEntrega") ?: "").toString(),
+                            catalogo_menu = (documento.data.get("productos") ?: "").toString()
+                        )
                     )
-                )
+                }
             }
             if (businessDataArrayList.isNotEmpty()) {
-                initRecyclerViewBusiness(businessDataArrayList, businessType)
+                initRecyclerViewBusiness(businessDataArrayList, businessType, numero_reporte)
             }else{
                 hideLoading(0.5)
                 alertWarning(requireContext(), "Sin lugares!", "No se encontraron lugares para mostrar!")
@@ -86,10 +97,11 @@ class ListBusinessFragment : Fragment() {
         }
     }
 
-    private fun initRecyclerViewBusiness(businnesArrayList: ArrayList<BusinessData>, businessType: String) {
+    private fun initRecyclerViewBusiness(businnesArrayList: ArrayList<BusinessData>, businessType: String, numero_reporte: String) {
         binding.rvBusinnessList.layoutManager = LinearLayoutManager(requireContext())
-        adapter = BusinessAdapter(businnesArrayList, businessType)
+        adapter = BusinessAdapter(businnesArrayList, businessType, numero_reporte)
         binding.rvBusinnessList.adapter = adapter
+        binding.fbAdd.visibility = View.VISIBLE
         hideLoading(3.0)
     }
 }

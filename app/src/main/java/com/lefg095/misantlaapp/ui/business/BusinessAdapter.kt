@@ -13,7 +13,8 @@ import com.squareup.picasso.Picasso
 
 class BusinessAdapter(
     val businnesList: ArrayList<BusinessData>,
-    private val businessType: String
+    private val businessType: String,
+    private val numero_reporte: String
 ): RecyclerView.Adapter<BusinessAdapter.BusinessViewHolder>() {
 
     override fun onCreateViewHolder(
@@ -26,7 +27,7 @@ class BusinessAdapter(
 
     override fun onBindViewHolder(holder: BusinessViewHolder, position: Int) {
         val business = businnesList[position]
-        holder.bind(business, businessType)
+        holder.bind(business, businessType, numero_reporte)
     }
 
     override fun getItemCount(): Int {
@@ -35,14 +36,15 @@ class BusinessAdapter(
 
     class BusinessViewHolder(view: View): RecyclerView.ViewHolder(view) {
     private val binding= ItemBussineBinding.bind(view)
-            fun bind(business: BusinessData, businessType: String){
+            fun bind(business: BusinessData, businessType: String, numero_reporte: String){
                 Picasso.get().load(business.url_img).into(binding.imgBusiness)
                 binding.tvBusinessName.text = business.nombre
                 binding.tvBusinessDesc.text = business.descripcion
                 binding.cardBusiness.setOnClickListener {
                     val businessBundle = bundleOf(
                         "businessType" to businessType,
-                        "businessData" to business
+                        "businessData" to business,
+                        "numero_reporte" to numero_reporte
                     )
                     itemView?.findNavController()?.navigate(R.id.detailBusiness, businessBundle)
                 }

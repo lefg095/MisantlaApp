@@ -20,13 +20,12 @@ import com.lefg095.misantlaapp.util.alertError
 import com.lefg095.misantlaapp.util.alertNormal
 import com.squareup.picasso.Picasso
 import android.preference.PreferenceManager
-
-
+import android.util.Log
+import com.lefg095.misantlaapp.util.alertWarning
 
 
 class BusinessDetailFragment : Fragment() {
     private lateinit var binding: FragmentBusinessdetailBinding
-    private val db = FirebaseFirestore.getInstance()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -43,7 +42,8 @@ class BusinessDetailFragment : Fragment() {
         var bundle = arguments
         val businessData = bundle!!.get("businessData") as BusinessData
         val businessType = bundle!!.get("businessType") as String
-        setData(businessData, businessType)
+        val numero_reporte = bundle!!.get("numero_reporte") as String
+        setData(businessData, businessType, numero_reporte)
     }
 
     fun loadAdds() {
@@ -51,7 +51,16 @@ class BusinessDetailFragment : Fragment() {
         binding.adView.loadAd(adRequest)
     }
 
-    private fun setData(businessData: BusinessData, businessType:String) {
+    private fun setData(businessData: BusinessData, businessType:String, numero_reporte: String) {
+        if (numero_reporte != ""){
+            binding.fbReport.visibility = View.VISIBLE
+            binding.fbReport.setOnClickListener {
+                val webIntent: Intent = Uri.parse("https://api.whatsapp.com/send?phone=52${numero_reporte}").let { webpage ->
+                    Intent(Intent.ACTION_VIEW, webpage)
+                }
+                startActivity(webIntent)
+            }
+        }
         Picasso.get().load(businessData.url_img).into(binding.imgBusinessDetail)
         binding.tvTitleBusiness.text = businessData.nombre
         if(businessData.ubicacion != "") {

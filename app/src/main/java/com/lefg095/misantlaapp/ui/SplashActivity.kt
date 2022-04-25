@@ -12,7 +12,6 @@ import com.lefg095.misantlaapp.util.ProviderTypes
 class SplashActivity: AppCompatActivity() {
     private lateinit var binding: LoginActivityBinding
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = LoginActivityBinding.inflate(layoutInflater)
@@ -20,8 +19,6 @@ class SplashActivity: AppCompatActivity() {
         setContentView(view)
         session()
     }
-
-
 
     private fun session() {
         val prefs = getSharedPreferences(getString(R.string.prefs_file), Context.MODE_PRIVATE)

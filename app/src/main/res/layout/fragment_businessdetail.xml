@@ -230,6 +230,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ly_btns" />
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fb_report"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="25dp"
+        android:backgroundTint="@color/orange"
+        android:src="@drawable/ic_alert"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/adView"
+        app:layout_constraintEnd_toEndOf="parent" />
+
     <!--ca-app-pub-3545246479745746/83 42199925-->
     <com.google.android.gms.ads.AdView
         android:id="@+id/adView"
