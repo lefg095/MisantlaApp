@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -106,7 +107,10 @@ class ListBusinessFragment : Fragment() {
         binding.rvBusinnessList.adapter = adapter
         binding.fbAdd.visibility = View.VISIBLE
         binding.fbAdd.setOnClickListener {
-            view?.findNavController()?.navigate(R.id.add_places)
+            val businessBundle = bundleOf(
+                "businessType" to businessType
+            )
+            view?.findNavController()?.navigate(R.id.add_places, businessBundle)
         }
         hideLoading(3.0)
     }
