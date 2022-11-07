@@ -1,8 +1,6 @@
 package com.lefg095.misantlaapp.ui.business
 
-import android.content.Context
 import android.content.Intent
-import android.content.SharedPreferences
 import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -12,16 +10,10 @@ import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import com.google.android.gms.ads.AdRequest
-import com.google.firebase.firestore.FirebaseFirestore
 import com.lefg095.misantlaapp.R
 import com.lefg095.misantlaapp.databinding.FragmentBusinessdetailBinding
 import com.lefg095.misantlaapp.model.BusinessData
-import com.lefg095.misantlaapp.util.alertError
-import com.lefg095.misantlaapp.util.alertNormal
 import com.squareup.picasso.Picasso
-import android.preference.PreferenceManager
-import android.util.Log
-import com.lefg095.misantlaapp.util.alertWarning
 
 
 class BusinessDetailFragment : Fragment() {

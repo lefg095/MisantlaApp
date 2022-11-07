@@ -11,6 +11,14 @@ android {
     compileSdk 31
 
     defaultConfig {
+        configurations.all {
+            resolutionStrategy { force 'androidx.core:core-ktx:1.7.0' }
+
+        }
+        configurations.all {
+            resolutionStrategy { force 'androidx.appcompat:appcompat:1.4.0' }
+
+        }
         applicationId "com.lefg095.misantlaapp"
         minSdk 21
         targetSdk 31
@@ -35,15 +43,14 @@ android {
     }
 
     buildFeatures {
-        dataBinding true
         viewBinding true
     }
 }
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    implementation 'androidx.core:core-ktx:1.7.0'
-    implementation 'androidx.appcompat:appcompat:1.4.0'
+    //implementation 'androidx.core:core-ktx:1.7.0'
+    //implementation 'androidx.appcompat:appcompat:1.4.0'
     implementation 'com.google.android.material:material:1.4.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.2'
     implementation 'com.google.android.gms:play-services-ads:19.7.0'
@@ -97,6 +104,10 @@ dependencies {
     implementation 'com.google.firebase:firebase-firestore'
     implementation 'com.google.android.gms:play-services-auth:20.1.0'
     implementation 'com.google.firebase:firebase-messaging'
+    implementation 'com.google.firebase:firebase-database-ktx'
+    implementation 'com.google.firebase:firebase-storage-ktx'
+
+    implementation 'androidx.work:work-runtime-ktx:2.7.1'
 
     //Facebook Auth
     implementation 'com.facebook.android:facebook-android-sdk:[4,5)'

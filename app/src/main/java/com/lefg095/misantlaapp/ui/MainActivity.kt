@@ -6,6 +6,8 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.GravityCompat
+import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.*
@@ -22,6 +24,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var toggle: ActionBarDrawerToggle
     lateinit var appBarConfiguration: AppBarConfiguration
     var provider = ""
+    var numeroReporte = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,7 +40,7 @@ class MainActivity : AppCompatActivity() {
 
         binding.navView.setNavigationItemSelectedListener {
             when(it.itemId){
-                R.id.it_config -> Toast.makeText(applicationContext, "Item one", Toast.LENGTH_LONG).show()
+                //R.id.it_config -> Toast.makeText(applicationContext, "Item one", Toast.LENGTH_LONG).show()
                 R.id.it_close_session->{
                     //Borrado de datos
                     val prefs = getSharedPreferences(getString(R.string.prefs_file), Context.MODE_PRIVATE).edit()
@@ -54,7 +57,18 @@ class MainActivity : AppCompatActivity() {
                     startActivity(i)
                     finish()
                 }
+                R.id.it_about_this->{
+                    val i = Intent(this, AboutActivity::class.java).apply {
+                    }
+                    startActivity(i)
+                }
+                R.id.it_contac->{
+                    val i = Intent(this, ContactActivity::class.java).apply {
+                    }
+                    startActivity(i)
+                }
             }
+            binding.mlayout.closeDrawer(GravityCompat.START)
             true
         }
 
@@ -75,7 +89,6 @@ class MainActivity : AppCompatActivity() {
         prefs.putString("email", email)
         prefs.putString("provider", provider)
         prefs.apply()
-
     }
 
     override fun onSupportNavigateUp(): Boolean {

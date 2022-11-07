@@ -17,6 +17,12 @@
         <activity android:name=".ui.AuthActivity"
             android:screenOrientation="portrait"
             android:configChanges="orientation|keyboardHidden"/>
+        <activity android:name=".ui.ContactActivity"
+            android:screenOrientation="portrait"
+            android:configChanges="orientation|keyboardHidden"/>
+        <activity android:name=".ui.AboutActivity"
+            android:screenOrientation="portrait"
+            android:configChanges="orientation|keyboardHidden"/>
         <activity
             android:name=".ui.SplashActivity"
             android:theme="@style/SplashTheme"

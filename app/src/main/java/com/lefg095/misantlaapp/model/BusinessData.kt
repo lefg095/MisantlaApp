@@ -5,10 +5,10 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class BusinessData(
-    var nombre: String,
-    var descripcion: String,
-    var ubicacion: String,
-    var url_img: String,
+    var nombre: String? = null,
+    var descripcion: String? = null,
+    var ubicacion: String? = null,
+    var url_img: String? = null,
 
     var desLong: String? = "",
     val horario: String? = "",

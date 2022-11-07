@@ -42,7 +42,6 @@ class ListBusinessFragment : Fragment() {
         val businessDataArrayList: ArrayList<BusinessData> = arrayListOf()
         var numero_reporte = ""
         db.collection("dataApp").get().addOnSuccessListener { result ->
-            Log.e("Firestore_dataApp_", "$result")
             for (documento in result) {
                 numero_reporte = "${documento.data.get("numeroReporte")}"
             }
@@ -67,7 +66,7 @@ class ListBusinessFragment : Fragment() {
                             instagram = (documento.data.get("instagram") ?: "").toString(),
                             servLocal = (documento.data.get("servLocal") ?: "").toString(),
                             servEntrega = (documento.data.get("servEntrega") ?: "").toString(),
-                            catalogo_menu = (documento.data.get("productos") ?: "").toString()
+                            catalogo_menu = (documento.data.get("productos") ?: "").toString(),
                         )
                     )
                 }

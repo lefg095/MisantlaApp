@@ -18,6 +18,7 @@
     </fragment>
 
     <fragment
+        android:label="MisantlaApp"
         android:id="@+id/listBusiness"
         android:name="com.lefg095.misantlaapp.ui.business.ListBusinessFragment"
         tools:layout="@layout/fragment_listbusiness">
@@ -32,6 +33,7 @@
     </fragment>
 
     <fragment
+        android:label="MisantlaApp"
         android:id="@+id/detailBusiness"
         android:name="com.lefg095.misantlaapp.ui.business.BusinessDetailFragment"
         tools:layout="@layout/fragment_businessdetail"
@@ -43,12 +45,14 @@
     </fragment>
 
     <fragment
+        android:label="MisantlaApp"
         android:id="@+id/imgScreen"
         android:name="com.lefg095.misantlaapp.ui.business.ScreenImgFragment"
         tools:layout="@layout/fragment_img_all_screen"/>
 
     <fragment
         android:id="@+id/add_places"
+        android:label="Agrega un lugar"
         android:name="com.lefg095.misantlaapp.ui.business.AddPlacesFragment"
         tools:layout="@layout/fragment_add_places"/>
 </navigation>
