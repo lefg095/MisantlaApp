@@ -54,5 +54,11 @@
         android:id="@+id/add_places"
         android:label="Agrega un lugar"
         android:name="com.lefg095.misantlaapp.ui.business.AddPlacesFragment"
-        tools:layout="@layout/fragment_add_places"/>
+        tools:layout="@layout/fragment_add_places">
+
+        <action android:id="@+id/action_pop_out_of_game"
+            app:popUpTo="@id/nav_graph"
+            app:popUpToInclusive="true" />
+
+    </fragment>
 </navigation>

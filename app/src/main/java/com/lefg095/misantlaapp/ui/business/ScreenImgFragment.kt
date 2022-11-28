@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.google.android.gms.ads.AdRequest
-import com.lefg095.misantlaapp.databinding.FragmentBusinessdetailBinding
 import com.lefg095.misantlaapp.databinding.FragmentImgAllScreenBinding
 import com.squareup.picasso.Picasso
 
@@ -17,7 +16,7 @@ class ScreenImgFragment: Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentImgAllScreenBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -25,11 +24,11 @@ class ScreenImgFragment: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         loadAdds()
-        val url_img = arguments?.get("url_img").toString()
-        Picasso.get().load(url_img).into(binding.imgAllScreen)
+        val urlImg = arguments?.get("url_img").toString()
+        Picasso.get().load(urlImg).into(binding.imgAllScreen)
     }
 
-    fun loadAdds() {
+    private fun loadAdds() {
         val adRequest = AdRequest.Builder().build()
         binding.adView.loadAd(adRequest)
     }

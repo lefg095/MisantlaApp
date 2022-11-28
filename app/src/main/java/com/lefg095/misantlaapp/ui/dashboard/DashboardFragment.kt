@@ -7,22 +7,16 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
-import androidx.navigation.NavGraphNavigator
-import androidx.navigation.Navigation
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.fragment.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.NavigationUI
 import com.google.android.gms.ads.AdRequest
 import com.google.firebase.firestore.FirebaseFirestore
 import com.lefg095.misantlaapp.R
 import com.lefg095.misantlaapp.databinding.FragmentDashboardBinding
 import com.lefg095.misantlaapp.model.SliderData
+import com.lefg095.misantlaapp.util.*
 import com.smarteist.autoimageslider.SliderView
 
-class DashboardFragment(
-) : Fragment(){
+class DashboardFragment : Fragment(){
     private lateinit var binding: FragmentDashboardBinding
     private val db = FirebaseFirestore.getInstance()
 
@@ -33,7 +27,7 @@ class DashboardFragment(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentDashboardBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -45,10 +39,10 @@ class DashboardFragment(
         val sliderDataArrayList: ArrayList<SliderData> = arrayListOf()
         var datos = ""
         db.collection("Marquesina").get().addOnSuccessListener { result ->
-            for (documento in result) {
-                datos += "${documento.data.get("url_Img")}\n\n"
-                url = "${documento.data.get("url_Img")}"
-                nameBusiness = "${documento.data.get("name_business")}"
+            for (document in result) {
+                datos += "${document.data["url_Img"]}\n\n"
+                url = "${document.data["url_Img"]}"
+                nameBusiness = "${document.data["name_business"]}"
                 sliderDataArrayList.add(
                     SliderData(
                         imgUrl = url,
@@ -60,45 +54,45 @@ class DashboardFragment(
                 initSlider(sliderDataArrayList)
             }
         }.addOnFailureListener { exception ->
-            Log.e("Firestore_", "Error al optener datos")
+            Log.e("Firestore_", "Error al optener datos_$exception")
         }
 
         binding.btn1.setOnClickListener {
-            showListBusiness("turismo")
+            showListBusiness(TOURISM)
         }
         binding.btn2.setOnClickListener {
-            showListBusiness("comida")
+            showListBusiness(FOOD)
         }
         binding.btn3.setOnClickListener {
-            showListBusiness("boutiques")
+            showListBusiness(BOUTIQUES)
         }
         binding.btn4.setOnClickListener {
-            showListBusiness("abarrotes")
+            showListBusiness(GROCERIES)
         }
         binding.btn5.setOnClickListener {
-            showListBusiness("escuelas")
+            showListBusiness(SCHOOLS)
         }
         binding.btn6.setOnClickListener {
-            showListBusiness("servicios")
+            showListBusiness(SERVICES)
         }
 
     }
 
-    fun loadAdds() {
+    private fun loadAdds() {
         val adRequest = AdRequest.Builder().build()
         binding.adView.loadAd(adRequest)
     }
 
-    fun initSlider(sliderDataArrayList: ArrayList<SliderData>) {
+    private fun initSlider(sliderDataArrayList: ArrayList<SliderData>) {
         val adapter = SliderAdapter(sliderDataArrayList)
-        binding.slider.setAutoCycleDirection(SliderView.LAYOUT_DIRECTION_LTR)
+        binding.slider.autoCycleDirection = SliderView.LAYOUT_DIRECTION_LTR
         binding.slider.setSliderAdapter(adapter)
-        binding.slider.setScrollTimeInSec(3)
-        binding.slider.setAutoCycle(true)
+        binding.slider.scrollTimeInSec = 3
+        binding.slider.isAutoCycle = true
         binding.slider.startAutoCycle()
     }
 
-    fun showListBusiness(businessType: String) {
+    private fun showListBusiness(businessType: String) {
         val businessTypeBundle = bundleOf("businessType" to businessType)
         view?.findNavController()?.navigate(R.id.listBusiness, businessTypeBundle)
     }

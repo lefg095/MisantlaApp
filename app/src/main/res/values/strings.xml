@@ -9,6 +9,22 @@
     <string name="facebook_app_id">515619450222329</string>
     <string name="fb_login_protocol_scheme">fb1234</string>
     <string name="facebook_client_token">14e83a58cc0029b76591972545094e2f</string>
-
+    <string name="add_image_logo">Agregar Imagen Logotipo</string>
+    <string name="add_image_menu_products">Agregar imagen de menu de productos</string>
+    <string name="name_place">Nombre del lugar</string>
+    <string name="short_description">Descripción corta</string>
+    <string name="long_description">Descripción larga</string>
+    <string name="url_ubication">Url ubicación</string>
+    <string name="url_facebook">Url perfil de facebook</string>
+    <string name="url_instagram">Url perfil de instagram</string>
+    <string name="call_number">Número para llamadas</string>
+    <string name="whatsapp_number">Número para Whatsapp</string>
+    <string name="contact_number">Número para comunicarnos contigo</string>
+    <string name="send_data_str">Enviar datos</string>
+    <string name="contact_name">Tu nombre</string>
+    <string name="hour_atention">Horario de atención</string>
+    <string name="timetable_detail_str">Horario: %1$s</string>
+    <string name="devs_str">"Diseñado y desarrollado por:\n LINEL IT Systems and Solutions \n\n en colaboración con: \n Artes Graficas Misantla"</string>
+    <string name="vs_str">Version: %1$s</string>
 
 </resources>

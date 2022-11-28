@@ -10,7 +10,7 @@ import com.smarteist.autoimageslider.SliderViewAdapter
 import com.squareup.picasso.Picasso
 
 class SliderAdapter(
-    val mSliderItems: List<SliderData>
+    private val mSliderItems: List<SliderData>
 ) : SliderViewAdapter<SliderAdapter.Holder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup): Holder {
@@ -28,7 +28,7 @@ class SliderAdapter(
         return mSliderItems.size
     }
 
-    class Holder(view: View) : SliderViewAdapter.ViewHolder(view) {
+    class Holder(view: View) : ViewHolder(view) {
         private val binding = ItemSliderBinding.bind(view)
         fun bind(slider: SliderData){
             Picasso.get().load(slider.imgUrl).into(binding.myimage)

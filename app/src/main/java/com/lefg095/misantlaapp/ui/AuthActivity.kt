@@ -4,8 +4,8 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import com.facebook.CallbackManager
 import com.facebook.FacebookCallback
 import com.facebook.FacebookException
@@ -21,7 +21,6 @@ import com.lefg095.misantlaapp.util.ProviderTypes
 import com.lefg095.misantlaapp.R
 import com.lefg095.misantlaapp.databinding.LoginActivityBinding
 import com.lefg095.misantlaapp.util.alertAuth
-import com.lefg095.misantlaapp.util.alertError
 
 
 class AuthActivity: AppCompatActivity() {
@@ -51,7 +50,7 @@ class AuthActivity: AppCompatActivity() {
 
     override fun onRestart() {
         super.onRestart()
-        binding.authLayout.setBackgroundColor(resources.getColor(R.color.white))
+        binding.authLayout.setBackgroundColor(ContextCompat.getColor(this, R.color.white))
         binding.authLayout.visibility = View.VISIBLE
 
     }
@@ -62,7 +61,7 @@ class AuthActivity: AppCompatActivity() {
         val provider = prefs.getString("provider", null)
 
         if (email != null && provider != null) {
-            binding.authLayout.setBackgroundColor(resources.getColor(R.color.blue_4ever))
+            binding.authLayout.setBackgroundColor(ContextCompat.getColor(this, R.color.blue_4ever))
             binding.authLayout.visibility = View.INVISIBLE
             showHome(email, ProviderTypes.valueOf(provider))
         }

@@ -29,12 +29,12 @@ class ContactActivity: AppCompatActivity() {
         getData()
     }
 
-    fun getData(){
+    private fun getData(){
         db.collection("dataApp").get().addOnSuccessListener { result ->
-            for (documento in result) {
+            for (document in result) {
                 val contactData = ContactData(
-                    whatsapp = documento.data["whatsapp"].toString(),
-                    telefono = documento.data["numeroReporte"].toString()
+                    whatsapp = document.data["whatsapp"].toString(),
+                    telefono = document.data["numeroReporte"].toString()
                 )
 
                 setData(contactData)
@@ -42,26 +42,26 @@ class ContactActivity: AppCompatActivity() {
                 break
             }
         }.addOnFailureListener { exception ->
-            Log.e("Firestore_", "Error al optener datos")
+            Log.e("Firestore_", "Error al optener datos_$exception")
         }
     }
 
-    fun setData(contactData: ContactData){
+    private fun setData(contactData: ContactData){
         if(contactData.whatsapp != ""){
             binding.btnWapp.visibility = View.VISIBLE
             binding.btnWapp.setOnClickListener {
-                val webIntent: Intent = Uri.parse("https://api.whatsapp.com/send?phone=52${contactData.whatsapp}").let { webpage ->
-                    Intent(Intent.ACTION_VIEW, webpage)
-                }
+                val webIntent = Intent(Intent.ACTION_VIEW,
+                    Uri.parse("https://api.whatsapp.com/send?phone=52${contactData.whatsapp}")
+                )
                 startActivity(webIntent)
             }
         }
         if(contactData.telefono != ""){
             binding.btnPhone.visibility = View.VISIBLE
             binding.btnPhone.setOnClickListener {
-                val callIntent: Intent = Uri.parse("tel:${contactData.telefono}").let { number ->
-                    Intent(Intent.ACTION_DIAL, number)
-                }
+                val callIntent = Intent(Intent.ACTION_DIAL,
+                    Uri.parse("tel:${contactData.telefono}")
+                )
                 startActivity(callIntent)
             }
         }

@@ -26,7 +26,7 @@ class ListBusinessFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentListbusinessBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -38,60 +38,60 @@ class ListBusinessFragment : Fragment() {
         showLoading()
     }
 
-    fun getData(businessType: String) {
+    private fun getData(businessType: String) {
         val businessDataArrayList: ArrayList<BusinessData> = arrayListOf()
-        var numero_reporte = ""
+        var numberAdmin = ""
         db.collection("dataApp").get().addOnSuccessListener { result ->
-            for (documento in result) {
-                numero_reporte = "${documento.data.get("numeroReporte")}"
+            for (document in result) {
+                numberAdmin = "${document.data["numeroReporte"]}"
             }
-        }.addOnFailureListener { exception ->
+        }.addOnFailureListener {
             Log.e("Firestore_dataApp_", "Error al optener datos")
         }
         db.collection(businessType).get().addOnSuccessListener { result ->
             for (documento in result) {
-                val mostrar = documento.data.get("mostrar")
-                if (mostrar == "1") {
+                val showData = documento.data["mostrar"]
+                if (showData == "1") {
                     businessDataArrayList.add(
                         BusinessData(
-                            descripcion = "${documento.data.get("descripcion")}",
-                            nombre = (documento.data.get("nombre") ?: "").toString(),
-                            ubicacion = (documento.data.get("ubicacion") ?: "").toString(),
-                            url_img = (documento.data.get("url_img") ?: "").toString(),
-                            desLong = (documento.data.get("descLong") ?: "").toString(),
-                            horario = (documento.data.get("horario") ?: "").toString(),
-                            telefono = (documento.data.get("telefono") ?: "").toString(),
-                            whatsapp = (documento.data.get("whatsapp") ?: "").toString(),
-                            facebook = (documento.data.get("facebook") ?: "").toString(),
-                            instagram = (documento.data.get("instagram") ?: "").toString(),
-                            servLocal = (documento.data.get("servLocal") ?: "").toString(),
-                            servEntrega = (documento.data.get("servEntrega") ?: "").toString(),
-                            catalogo_menu = (documento.data.get("productos") ?: "").toString(),
+                            descripcion = "${documento.data["descripcion"]}",
+                            nombre = (documento.data["nombre"] ?: "").toString(),
+                            ubicacion = (documento.data["ubicacion"] ?: "").toString(),
+                            url_img = (documento.data["url_img"] ?: "").toString(),
+                            desLong = (documento.data["descLong"] ?: "").toString(),
+                            horario = (documento.data["horario"] ?: "").toString(),
+                            telefono = (documento.data["telefono"] ?: "").toString(),
+                            whatsapp = (documento.data["whatsapp"] ?: "").toString(),
+                            facebook = (documento.data["facebook"] ?: "").toString(),
+                            instagram = (documento.data["instagram"] ?: "").toString(),
+                            servLocal = (documento.data["servLocal"] ?: "").toString(),
+                            servEntrega = (documento.data["servEntrega"] ?: "").toString(),
+                            catalogo_menu = (documento.data["productos"] ?: "").toString(),
                         )
                     )
                 }
             }
             if (businessDataArrayList.isNotEmpty()) {
-                initRecyclerViewBusiness(businessDataArrayList, businessType, numero_reporte)
+                initRecyclerViewBusiness(businessDataArrayList, businessType, numberAdmin)
             }else{
                 hideLoading(0.5)
                 alertWarning(requireContext(), "Sin lugares!", "No se encontraron lugares para mostrar!")
                 binding.tvListVacia.visibility = View.VISIBLE
                 binding.rvBusinnessList.visibility = View.GONE
             }
-        }.addOnFailureListener { exception ->
+        }.addOnFailureListener {
             alertError(requireContext(), "Error al optener datos!")
             parentFragmentManager.popBackStack()
             Log.e("Firestore_${businessType}_", "Error al optener datos")
         }
     }
 
-    fun showLoading(){
+    private fun showLoading(){
         binding.imgLoading.visibility = View.VISIBLE
     }
 
-    fun hideLoading(time: Double){
-        var times = time*1000
+    private fun hideLoading(time: Double){
+        val times = time*1000
         try {
             Thread.sleep(times.toLong())
             binding.imgLoading.visibility = View.GONE
@@ -107,7 +107,8 @@ class ListBusinessFragment : Fragment() {
         binding.fbAdd.visibility = View.VISIBLE
         binding.fbAdd.setOnClickListener {
             val businessBundle = bundleOf(
-                "businessType" to businessType
+                "businessType" to businessType,
+                "listPlaces" to businnesArrayList
             )
             view?.findNavController()?.navigate(R.id.add_places, businessBundle)
         }

@@ -21,7 +21,7 @@ class AboutActivity: AppCompatActivity() {
 
         val pInfo = applicationContext.packageManager.getPackageInfo(packageName, 0)
         val version: String = pInfo.versionName
-        binding.tvVersion.text = "Version: ${version}"
-        binding.tvDevs.text = "Diseñado y desarrollado por:\n LINEL IT Systems and Solutions \n\n en colaboración con: \n Artes Graficas Misantla"
+        binding.tvVersion.text = getString(R.string.vs_str, version)
+        binding.tvDevs.text = getString(R.string.devs_str)
     }
 }

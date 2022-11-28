@@ -13,6 +13,8 @@ import com.google.android.gms.ads.AdRequest
 import com.lefg095.misantlaapp.R
 import com.lefg095.misantlaapp.databinding.FragmentBusinessdetailBinding
 import com.lefg095.misantlaapp.model.BusinessData
+import com.lefg095.misantlaapp.util.FOOD
+import com.lefg095.misantlaapp.util.TOURISM
 import com.squareup.picasso.Picasso
 
 
@@ -23,7 +25,7 @@ class BusinessDetailFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentBusinessdetailBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -31,25 +33,25 @@ class BusinessDetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         loadAdds()
-        var bundle = arguments
+        val bundle = arguments
         val businessData = bundle!!.get("businessData") as BusinessData
-        val businessType = bundle!!.get("businessType") as String
-        val numero_reporte = bundle!!.get("numero_reporte") as String
-        setData(businessData, businessType, numero_reporte)
+        val businessType = bundle.get("businessType") as String
+        val numberAdmin = bundle.get("numero_reporte") as String
+        setData(businessData, businessType, numberAdmin)
     }
 
-    fun loadAdds() {
+    private fun loadAdds() {
         val adRequest = AdRequest.Builder().build()
         binding.adView.loadAd(adRequest)
     }
 
-    private fun setData(businessData: BusinessData, businessType:String, numero_reporte: String) {
-        if (numero_reporte != ""){
+    private fun setData(businessData: BusinessData, businessType:String, numberAdmin: String) {
+        if (numberAdmin != ""){
             binding.fbReport.visibility = View.VISIBLE
             binding.fbReport.setOnClickListener {
-                val webIntent: Intent = Uri.parse("https://api.whatsapp.com/send?phone=52${numero_reporte}").let { webpage ->
-                    Intent(Intent.ACTION_VIEW, webpage)
-                }
+                val webIntent = Intent(Intent.ACTION_VIEW,
+                    Uri.parse("https://api.whatsapp.com/send?phone=52${numberAdmin}")
+                )
                 startActivity(webIntent)
             }
         }
@@ -58,9 +60,9 @@ class BusinessDetailFragment : Fragment() {
         if(businessData.ubicacion != "") {
             binding.btnMaps.visibility = View.VISIBLE
             binding.btnMaps.setOnClickListener {
-                val webIntent: Intent = Uri.parse(businessData.ubicacion).let { webpage ->
-                    Intent(Intent.ACTION_VIEW, webpage)
-                }
+                val webIntent = Intent(Intent.ACTION_VIEW,
+                    Uri.parse(businessData.ubicacion)
+                )
                 startActivity(webIntent)
             }
         }
@@ -70,7 +72,7 @@ class BusinessDetailFragment : Fragment() {
             )
             view?.findNavController()?.navigate(R.id.imgScreen, businessBundle)
         }
-        if (businessType == "turismo"){
+        if (businessType == TOURISM){
             if(businessData.desLong != ""){
                 binding.tvDescLong.visibility = View.VISIBLE
                 binding.tvDescLong.text = businessData.desLong
@@ -78,9 +80,9 @@ class BusinessDetailFragment : Fragment() {
         }
         if(businessData.horario != ""){
             binding.tvHorario.visibility = View.VISIBLE
-            binding.tvHorario.text = "Horario: ${businessData.horario}"
+            binding.tvHorario.text = getString(R.string.timetable_detail_str, businessData.horario)
         }
-        if (businessType == "comida" && businessData.servEntrega != "" && businessData.servLocal != ""){
+        if (businessType == FOOD && businessData.servEntrega != "" && businessData.servLocal != ""){
             binding.cardServices.visibility = View.VISIBLE
             when(businessData.servEntrega){
                 "1"->{
@@ -102,9 +104,9 @@ class BusinessDetailFragment : Fragment() {
         if(businessData.telefono != ""){
             binding.btnPhone.visibility = View.VISIBLE
             binding.btnPhone.setOnClickListener {
-                val callIntent: Intent = Uri.parse("tel:${businessData.telefono}").let { number ->
-                    Intent(Intent.ACTION_DIAL, number)
-                }
+                val callIntent = Intent(Intent.ACTION_DIAL,
+                    Uri.parse("tel:${businessData.telefono}")
+                )
                 startActivity(callIntent)
             }
         }
@@ -120,18 +122,16 @@ class BusinessDetailFragment : Fragment() {
         if(businessData.facebook != ""){
             binding.btnFace.visibility = View.VISIBLE
             binding.btnFace.setOnClickListener {
-                val webIntent: Intent = Uri.parse(businessData.facebook).let { webpage ->
-                    Intent(Intent.ACTION_VIEW, webpage)
-                }
+                val webIntent = Intent(Intent.ACTION_VIEW, Uri.parse(businessData.facebook))
                 startActivity(webIntent)
             }
         }
         if(businessData.instagram != ""){
             binding.btnInsta.visibility = View.VISIBLE
             binding.btnInsta.setOnClickListener {
-                val webIntent: Intent = Uri.parse(businessData.instagram).let { webpage ->
-                    Intent(Intent.ACTION_VIEW, webpage)
-                }
+                val webIntent = Intent(Intent.ACTION_VIEW,
+                    Uri.parse(businessData.instagram)
+                )
                 startActivity(webIntent)
             }
         }

@@ -18,231 +18,336 @@
             android:layout_height="wrap_content">
 
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/il_nombre"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:hint="Nombre del lugar"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintWidth_percent="0.85">
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/il_nombre"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:hint="@string/name_place"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintWidth_percent="0.85">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/et_nombre"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_nombre"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:inputType="text"
+                    android:lines="1" />
 
-        </com.google.android.material.textfield.TextInputLayout>
+            </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/il_short_desc"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:hint="Descripción corta"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/il_nombre"
-            app:layout_constraintWidth_percent="0.85">
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/il_short_desc"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:hint="@string/short_description"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/il_nombre"
+                app:layout_constraintWidth_percent="0.85">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/et_short_desc"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_short_desc"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:inputType="text"
+                    android:lines="1" />
 
-        </com.google.android.material.textfield.TextInputLayout>
+            </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/il_long_desc"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:hint="Descripción larga"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/il_short_desc"
-            app:layout_constraintWidth_percent="0.85">
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/il_long_desc"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:hint="@string/long_description"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/il_short_desc"
+                app:layout_constraintWidth_percent="0.85">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/et_long_desc"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_long_desc"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:inputType="text" />
 
-        </com.google.android.material.textfield.TextInputLayout>
+            </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/il_ubicacion"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:hint="Url ubicación"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/il_long_desc"
-            app:layout_constraintWidth_percent="0.85">
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/il_horario"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:hint="@string/hour_atention"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/il_long_desc"
+                app:layout_constraintWidth_percent="0.85">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/et_ubicacion"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_horario"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:inputType="text"
+                    android:lines="1" />
 
-        </com.google.android.material.textfield.TextInputLayout>
+            </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/il_url_facebook"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:hint="Url perfil de facebook"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/il_ubicacion"
-            app:layout_constraintWidth_percent="0.85">
+            <CheckBox
+                android:id="@+id/chb_facebook"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginTop="8dp"
+                android:text="¿El lugar tiene Facebook?"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/il_horario"
+                app:layout_constraintWidth_percent="0.70"/>
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/et_url_facebook"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/il_url_facebook"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:hint="@string/url_facebook"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/chb_facebook"
+                app:layout_constraintWidth_percent="0.85">
 
-        </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_url_facebook"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:inputType="text"
+                    android:lines="1" />
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/il_url_instagra"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:hint="Url perfil de instagram"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/il_url_facebook"
-            app:layout_constraintWidth_percent="0.85">
+            </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/et_url_instagra"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/il_num_calling"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:hint="Número para llamadas"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/il_url_instagra"
-            app:layout_constraintWidth_percent="0.85">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/et_num_calling"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/il_num_whatsapp"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:hint="Número para Whatsapp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/il_num_calling"
-            app:layout_constraintWidth_percent="0.85">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/et_num_whatsapp"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
-
-        </com.google.android.material.textfield.TextInputLayout>
+            <CheckBox
+                android:id="@+id/chb_instagram"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginTop="8dp"
+                android:text="¿El lugar tiene Instagram?"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/il_url_facebook"
+                app:layout_constraintWidth_percent="0.70"/>
 
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/il_url_img_logo"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:hint="Url imagen logotipo"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/il_num_whatsapp"
-            app:layout_constraintWidth_percent="0.85">
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/il_url_instagra"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:visibility="gone"
+                android:hint="@string/url_instagram"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/chb_instagram"
+                app:layout_constraintWidth_percent="0.85">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/et_url_img_logo"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_url_instagra"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:inputType="text"
+                    android:lines="1" />
 
-        </com.google.android.material.textfield.TextInputLayout>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <CheckBox
+                android:id="@+id/chb_whatsapp"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginTop="8dp"
+                android:text="¿El lugar tiene Whatsapp?"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/il_url_instagra"
+                app:layout_constraintWidth_percent="0.70"/>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/il_num_whatsapp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:hint="@string/whatsapp_number"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:counterEnabled="true"
+                android:visibility="gone"
+                app:counterMaxLength="10"
+                app:layout_constraintTop_toBottomOf="@+id/chb_whatsapp"
+                app:layout_constraintWidth_percent="0.85">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_num_whatsapp"
+                    android:layout_width="match_parent"
+                    android:maxLength="10"
+                    android:layout_height="match_parent"
+                    android:inputType="number"
+                    android:lines="1" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <CheckBox
+                android:id="@+id/chb_serv_local"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginTop="8dp"
+                android:text="¿El lugar tiene local fisico?"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/il_num_whatsapp"
+                app:layout_constraintWidth_percent="0.70"/>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/il_ubicacion"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:hint="@string/url_ubication"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/chb_serv_local"
+                app:layout_constraintWidth_percent="0.85">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_ubicacion"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:inputType="text"
+                    android:lines="1" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <CheckBox
+                android:id="@+id/chb_serv_entrega"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginTop="8dp"
+                android:text="¿El lugar tiene servicio a domicilio?"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/il_ubicacion"
+                app:layout_constraintWidth_percent="0.70"/>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/il_num_calling"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:hint="@string/call_number"
+                app:counterEnabled="true"
+                app:counterMaxLength="10"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/chb_serv_entrega"
+                app:layout_constraintWidth_percent="0.85">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_num_calling"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:maxLength="10"
+                    android:inputType="number"
+                    android:lines="1" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Button
+                android:id="@+id/btn_add_img_logo"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@color/blue_4ever"
+                android:text="@string/add_image_logo"
+                android:textColor="@color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/il_num_calling"
+                app:layout_constraintWidth_percent="0.85" />
+
+            <Button
+                android:id="@+id/btn_add_img_menu_products"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@color/blue_4ever"
+                android:text="@string/add_image_menu_products"
+                android:textColor="@color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btn_add_img_logo"
+                app:layout_constraintWidth_percent="0.85" />
 
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/il_url_productos"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:hint="Url Imagen Menu"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/il_url_img_logo"
-            app:layout_constraintWidth_percent="0.85">
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/il_num_contacto"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:hint="@string/contact_number"
+                app:counterEnabled="true"
+                app:counterMaxLength="10"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btn_add_img_menu_products"
+                app:layout_constraintWidth_percent="0.85">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/et_url_productos"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_num_contacto"
+                    android:maxLength="10"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:inputType="number"
+                    android:lines="1" />
 
-        </com.google.android.material.textfield.TextInputLayout>
+            </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/il_num_contacto"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:hint="Número para comunicarnos contigo"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/il_url_productos"
-            app:layout_constraintWidth_percent="0.85">
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/il_nombre_contacto"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:hint="@string/contact_name"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/il_num_contacto"
+                app:layout_constraintWidth_percent="0.85">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/et_num_contacto"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_nombre_contacto"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:inputType="text"
+                    android:lines="1" />
 
-        </com.google.android.material.textfield.TextInputLayout>
+            </com.google.android.material.textfield.TextInputLayout>
 
             <Button
                 android:id="@+id/btn_agregar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="24dp"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
                 android:layout_marginBottom="20dp"
                 android:background="@color/blue_4ever"
-                android:text="Agregar"
+                android:text="@string/send_data_str"
                 android:textColor="@color/white"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/btn_agregar_imagen" />
-
-        <Button
-            android:id="@+id/btn_agregar_imagen"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:background="@color/blue_4ever"
-            android:text="Agregar Imagen"
-            android:textColor="@color/white"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/il_num_contacto" />
+                app:layout_constraintTop_toBottomOf="@+id/il_nombre_contacto"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

@@ -1,14 +1,17 @@
 package com.lefg095.misantlaapp.ui
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import com.lefg095.misantlaapp.R
 import com.lefg095.misantlaapp.databinding.LoginActivityBinding
 import com.lefg095.misantlaapp.util.ProviderTypes
 
+@SuppressLint("CustomSplashScreen")
 class SplashActivity: AppCompatActivity() {
     private lateinit var binding: LoginActivityBinding
 
@@ -26,7 +29,7 @@ class SplashActivity: AppCompatActivity() {
         val provider = prefs.getString("provider", null)
 
         if (email != null && provider != null) {
-            binding.authLayout.setBackgroundColor(resources.getColor(R.color.blue_4ever))
+            binding.authLayout.setBackgroundColor(ContextCompat.getColor(this, R.color.blue_4ever))
             binding.authLayout.visibility = View.INVISIBLE
             showHome(email, ProviderTypes.valueOf(provider))
         }else{

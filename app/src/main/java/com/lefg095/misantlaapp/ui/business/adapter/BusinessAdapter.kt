@@ -46,7 +46,7 @@ class BusinessAdapter(
                         "businessData" to business,
                         "numero_reporte" to numero_reporte
                     )
-                    itemView?.findNavController()?.navigate(R.id.detailBusiness, businessBundle)
+                    itemView.findNavController().navigate(R.id.detailBusiness, businessBundle)
                 }
             }
     }
