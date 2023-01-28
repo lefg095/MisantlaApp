@@ -25,9 +25,8 @@ import com.lefg095.misantlaapp.util.*
 class AddPlacesFragment: Fragment() {
     private val db = FirebaseFirestore.getInstance()
     private lateinit var binding: FragmentAddPlacesBinding
-    private val FILE = 1
     var listPlaces: ArrayList<BusinessData> = arrayListOf()
-    var businessType = ""
+    private var businessType = ""
     var imgType = ""
     private var nombre = ""
     private var shortDesc = ""

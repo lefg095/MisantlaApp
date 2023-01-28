@@ -23,6 +23,22 @@ fun alertError(context: Context, message: String) {
 
 }
 
+fun alertSucces(context: Context, message: String) {
+    val builder = AlertDialog.Builder(context)
+
+    builder
+        .setIcon(R.drawable.ic_ok)
+        .setPositiveButton("OK") { _, _ -> }
+        .setTitle("Exito!")
+        .setMessage(message)
+    val dialog = builder.create()
+    dialog.show()
+
+    val btnOk = dialog.getButton(DialogInterface.BUTTON_POSITIVE)
+    btnOk.setTextColor(ContextCompat.getColor(context, R.color.red))
+
+}
+
 fun alertWarning(context: Context, title: String, message: String) {
     val builder = AlertDialog.Builder(context)
 

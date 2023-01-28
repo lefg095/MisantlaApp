@@ -26,5 +26,8 @@
     <string name="timetable_detail_str">Horario: %1$s</string>
     <string name="devs_str">"Diseñado y desarrollado por:\n LINEL IT Systems and Solutions \n\n en colaboración con: \n Artes Graficas Misantla"</string>
     <string name="vs_str">Version: %1$s</string>
+    <string name="add_img_or_ss">Agregar captura de pantalla o imagen</string>
+    <string name="report_des">Describe tu reporte</string>
+    <string name="send_report">Enviar reporte</string>
 
 </resources>

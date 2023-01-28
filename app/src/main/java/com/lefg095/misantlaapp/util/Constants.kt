@@ -7,3 +7,4 @@ const val BOUTIQUES ="boutiques"
 const val GROCERIES ="abarrotes"
 const val SCHOOLS ="escuelas"
 const val SERVICES ="servicios"
+const val FILE = 1

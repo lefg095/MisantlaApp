@@ -42,6 +42,10 @@
             android:id="@+id/action_to_img_screens"
             app:destination="@+id/imgScreen"/>
 
+        <action
+            android:id="@+id/go_to_report_screen"
+            app:destination="@+id/reportScreen"/>
+
     </fragment>
 
     <fragment
@@ -49,6 +53,18 @@
         android:id="@+id/imgScreen"
         android:name="com.lefg095.misantlaapp.ui.business.ScreenImgFragment"
         tools:layout="@layout/fragment_img_all_screen"/>
+
+    <fragment
+        android:label="MisantlaApp"
+        android:id="@+id/reportScreen"
+        android:name="com.lefg095.misantlaapp.ui.business.ReportFragment"
+        tools:layout="@layout/fragment_report">
+
+        <action android:id="@+id/action_pop_out_of_game"
+            app:popUpTo="@id/nav_graph"
+            app:popUpToInclusive="true" />
+
+    </fragment>
 
     <fragment
         android:id="@+id/add_places"

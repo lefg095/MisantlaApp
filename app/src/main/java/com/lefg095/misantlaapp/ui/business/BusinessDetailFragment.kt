@@ -49,10 +49,11 @@ class BusinessDetailFragment : Fragment() {
         if (numberAdmin != ""){
             binding.fbReport.visibility = View.VISIBLE
             binding.fbReport.setOnClickListener {
-                val webIntent = Intent(Intent.ACTION_VIEW,
-                    Uri.parse("https://api.whatsapp.com/send?phone=52${numberAdmin}")
-                )
-                startActivity(webIntent)
+//                val webIntent = Intent(Intent.ACTION_VIEW,
+//                    Uri.parse("https://api.whatsapp.com/send?phone=52${numberAdmin}")
+//                )
+//                startActivity(webIntent)
+                view?.findNavController()?.navigate(R.id.reportScreen)
             }
         }
         Picasso.get().load(businessData.url_img).into(binding.imgBusinessDetail)
