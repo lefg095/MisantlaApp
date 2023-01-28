@@ -25,12 +25,9 @@ import com.lefg095.misantlaapp.util.*
 class ReportFragment: Fragment() {
     private val db = FirebaseFirestore.getInstance()
     private lateinit var binding: FragmentReportBinding
-    var imgType = ""
     var nombre = ""
     var descReport = ""
     var numberPhone = ""
-
-
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -76,12 +73,6 @@ class ReportFragment: Fragment() {
                 )
             }
         }
-    }
-
-    fun getDataFields(){
-        nombre = binding.etName.text.toString()
-        numberPhone = binding.etPhone.text.toString()
-        descReport = binding.etReportDescription.text.toString()
     }
 
     private fun alertSuccessSendData() {
@@ -151,7 +142,10 @@ class ReportFragment: Fragment() {
     }
 
     private fun validateFields(): Boolean{
-        getDataFields()
+        nombre = binding.etName.text.toString()
+        numberPhone = binding.etPhone.text.toString()
+        descReport = binding.etReportDescription.text.toString()
+
         return when{
             !nombre.validateText() -> {
                 binding.ilName.error = "Escribe un nombre"
