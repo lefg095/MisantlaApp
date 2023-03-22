@@ -36,8 +36,7 @@ class BusinessDetailFragment : Fragment() {
         val bundle = arguments
         val businessData = bundle!!.get("businessData") as BusinessData
         val businessType = bundle.get("businessType") as String
-        val numberAdmin = bundle.get("numero_reporte") as String
-        setData(businessData, businessType, numberAdmin)
+        setData(businessData, businessType)
     }
 
     private fun loadAdds() {
@@ -45,16 +44,10 @@ class BusinessDetailFragment : Fragment() {
         binding.adView.loadAd(adRequest)
     }
 
-    private fun setData(businessData: BusinessData, businessType:String, numberAdmin: String) {
-        if (numberAdmin != ""){
-            binding.fbReport.visibility = View.VISIBLE
-            binding.fbReport.setOnClickListener {
-//                val webIntent = Intent(Intent.ACTION_VIEW,
-//                    Uri.parse("https://api.whatsapp.com/send?phone=52${numberAdmin}")
-//                )
-//                startActivity(webIntent)
-                view?.findNavController()?.navigate(R.id.reportScreen)
-            }
+    private fun setData(businessData: BusinessData, businessType:String) {
+        binding.fbReport.visibility = View.VISIBLE
+        binding.fbReport.setOnClickListener {
+            view?.findNavController()?.navigate(R.id.reportScreen)
         }
         Picasso.get().load(businessData.url_img).into(binding.imgBusinessDetail)
         binding.tvTitleBusiness.text = businessData.nombre

@@ -34,7 +34,8 @@ class ContactActivity: AppCompatActivity() {
             for (document in result) {
                 val contactData = ContactData(
                     whatsapp = document.data["whatsapp"].toString(),
-                    telefono = document.data["numeroReporte"].toString()
+                    telefono = document.data["numeroReporte"].toString(),
+                    email = document.data["email"].toString()
                 )
 
                 setData(contactData)
@@ -64,6 +65,13 @@ class ContactActivity: AppCompatActivity() {
                 )
                 startActivity(callIntent)
             }
+        }
+        if (contactData.email != ""){
+            binding.textView2.text =
+                buildString {
+                    append("Contacto: ")
+                    append(contactData.email)
+                }
         }
     }
 }

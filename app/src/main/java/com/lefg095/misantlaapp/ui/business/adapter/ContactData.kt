@@ -9,4 +9,5 @@ data class ContactData(
     val whatsapp: String? = "",
     val facebook: String? = "",
     val instagram: String? = "",
+    val email: String? = ""
 ): Parcelable

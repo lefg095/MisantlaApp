@@ -10,7 +10,11 @@ import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.*
 import com.facebook.login.LoginManager
+import com.google.firebase.analytics.FirebaseAnalytics
+import com.google.firebase.analytics.ktx.analytics
+import com.google.firebase.analytics.ktx.logEvent
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.ktx.Firebase
 import com.lefg095.misantlaapp.util.ProviderTypes
 import com.lefg095.misantlaapp.R
 import com.lefg095.misantlaapp.databinding.ActivityMainBinding
@@ -18,13 +22,14 @@ import com.lefg095.misantlaapp.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
-
+    private lateinit var firebaseAnalytics: FirebaseAnalytics
     lateinit var toggle: ActionBarDrawerToggle
     lateinit var appBarConfiguration: AppBarConfiguration
     var provider = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        firebaseAnalytics = Firebase.analytics
         binding = ActivityMainBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
@@ -55,6 +60,7 @@ class MainActivity : AppCompatActivity() {
                     finish()
                 }
                 R.id.it_about_this->{
+                    tracker("it_about_this", "btn_acerca_de","click")
                     val i = Intent(this, AboutActivity::class.java).apply {
                     }
                     startActivity(i)
@@ -92,5 +98,13 @@ class MainActivity : AppCompatActivity() {
         val navController = findNavController(R.id.nav_host_fragment)
         return navController.navigateUp(appBarConfiguration)||super.onSupportNavigateUp()
         //onBackPressed()
+    }
+
+    private fun tracker(id: String, name: String, content: String){
+        firebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_ITEM) {
+            this.param(FirebaseAnalytics.Param.ITEM_ID, id)
+            this.param(FirebaseAnalytics.Param.ITEM_NAME, name)
+            this.param(FirebaseAnalytics.Param.CONTENT_TYPE, "image")
+        }
     }
 }

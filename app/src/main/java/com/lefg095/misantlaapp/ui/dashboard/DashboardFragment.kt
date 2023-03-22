@@ -20,8 +20,12 @@ class DashboardFragment : Fragment(){
     private lateinit var binding: FragmentDashboardBinding
     private val db = FirebaseFirestore.getInstance()
 
-    var url = ""
+    var urlImg = ""
     var nameBusiness = ""
+    var dateEnd = ""
+    var dateIni = ""
+    var urlBusiness = ""
+    var imgUrlDefault = ""
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -37,16 +41,22 @@ class DashboardFragment : Fragment(){
         loadAdds()
 
         val sliderDataArrayList: ArrayList<SliderData> = arrayListOf()
-        var datos = ""
         db.collection("Marquesina").get().addOnSuccessListener { result ->
             for (document in result) {
-                datos += "${document.data["url_Img"]}\n\n"
-                url = "${document.data["url_Img"]}"
+                dateEnd = "${document.data["date_end"]}"
+                dateIni = "${document.data["date_ini"]}"
+                urlBusiness = "${document.data["url_business"]}"
+                urlImg = "${document.data["url_Img"]}"
                 nameBusiness = "${document.data["name_business"]}"
+                imgUrlDefault = "${document.data["url_default"]}"
                 sliderDataArrayList.add(
                     SliderData(
-                        imgUrl = url,
-                        nameBusiness = nameBusiness
+                        dateEnd = dateEnd,
+                        dateInit = dateIni,
+                        businessUrl = urlBusiness,
+                        imgUrl = urlImg,
+                        nameBusiness = nameBusiness,
+                        imgUrlDefault = imgUrlDefault
                     )
                 )
             }

@@ -72,7 +72,7 @@ class ListBusinessFragment : Fragment() {
                 }
             }
             if (businessDataArrayList.isNotEmpty()) {
-                initRecyclerViewBusiness(businessDataArrayList, businessType, numberAdmin)
+                initRecyclerViewBusiness(businessDataArrayList, businessType)
             }else{
                 hideLoading(0.5)
                 alertWarning(requireContext(), "Sin lugares!", "No se encontraron lugares para mostrar!")
@@ -100,9 +100,9 @@ class ListBusinessFragment : Fragment() {
         }
     }
 
-    private fun initRecyclerViewBusiness(businnesArrayList: ArrayList<BusinessData>, businessType: String, numero_reporte: String) {
+    private fun initRecyclerViewBusiness(businnesArrayList: ArrayList<BusinessData>, businessType: String) {
         binding.rvBusinnessList.layoutManager = LinearLayoutManager(requireContext())
-        adapter = BusinessAdapter(businnesArrayList, businessType, numero_reporte)
+        adapter = BusinessAdapter(businnesArrayList, businessType)
         binding.rvBusinnessList.adapter = adapter
         binding.fbAdd.visibility = View.VISIBLE
         binding.fbAdd.setOnClickListener {

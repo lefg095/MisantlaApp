@@ -8,10 +8,15 @@ import com.lefg095.misantlaapp.databinding.ItemSliderBinding
 import com.lefg095.misantlaapp.model.SliderData
 import com.smarteist.autoimageslider.SliderViewAdapter
 import com.squareup.picasso.Picasso
+import java.text.SimpleDateFormat
+import java.time.LocalDate
+import java.util.*
 
 class SliderAdapter(
     private val mSliderItems: List<SliderData>
 ) : SliderViewAdapter<SliderAdapter.Holder>() {
+
+    lateinit var slideDefault: SliderData
 
     override fun onCreateViewHolder(parent: ViewGroup): Holder {
         val inflate = LayoutInflater.from(parent.context)
@@ -31,7 +36,17 @@ class SliderAdapter(
     class Holder(view: View) : ViewHolder(view) {
         private val binding = ItemSliderBinding.bind(view)
         fun bind(slider: SliderData){
-            Picasso.get().load(slider.imgUrl).into(binding.myimage)
+            val dateFormat = SimpleDateFormat("dd/MM/yyyy")
+            //SimpleDateFormat("MM/dd/yyyy")
+            val dateToday = Date()
+            val dateEndSlide = dateFormat.parse(slider.dateEnd)
+
+            Picasso.get().load(
+                if (dateEndSlide.after(dateToday)) {
+                    slider.imgUrl
+                }else {
+                    slider.imgUrlDefault
+                }).into(binding.myimage)
         }
     }
 }
