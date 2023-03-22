@@ -81,35 +81,19 @@ class AuthActivity: AppCompatActivity() {
             startActivityForResult(googleclient.signInIntent, GOOGLE_SIGN_IN)
 
         }
-
-        binding.btnFacebookAuth.setOnClickListener{
-            LoginManager.getInstance().logInWithReadPermissions(this, listOf("email"))
-            LoginManager.getInstance().registerCallback(callbackManager,
-                object : FacebookCallback<LoginResult> {
-                    override fun onSuccess(result: LoginResult?) {
-                        result?.let {
-                            val token = it.accessToken
-                            val credentials = FacebookAuthProvider.getCredential(token.token)
-                            FirebaseAuth.getInstance().signInWithCredential(credentials).addOnCompleteListener {
-                                if (it.isSuccessful) {
-                                    showHome(it.result?.user?.email ?: "", ProviderTypes.FACEBOOK)
-                                } else {
-                                    alertAuth(applicationContext)
-                                }
-
-                            }
-                        }
-                    }
-
-                    override fun onCancel() {
-
-                    }
-
-                    override fun onError(error: FacebookException?) {
-                        alertAuth(applicationContext)
+        binding.btnLogin.setOnClickListener {
+            if (binding.itEmail.text!!.isNotEmpty() && binding.itPassword.text!!.isNotEmpty()){
+                FirebaseAuth.getInstance().signInWithEmailAndPassword(
+                    binding.itEmail.text.toString(),
+                    binding.itPassword.text.toString()
+                ).addOnCompleteListener {
+                    if (it.isSuccessful){
+                        showHome(binding.itEmail.text.toString(), ProviderTypes.BASIC)
+                    } else {
+                        alertAuth(this)
                     }
                 }
-            )
+            }
         }
     }
 
