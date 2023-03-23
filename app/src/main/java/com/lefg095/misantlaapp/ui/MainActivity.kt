@@ -9,13 +9,11 @@ import androidx.core.view.GravityCompat
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.*
-import com.facebook.login.LoginManager
 import com.google.firebase.analytics.FirebaseAnalytics
 import com.google.firebase.analytics.ktx.analytics
 import com.google.firebase.analytics.ktx.logEvent
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.ktx.Firebase
-import com.lefg095.misantlaapp.util.ProviderTypes
 import com.lefg095.misantlaapp.R
 import com.lefg095.misantlaapp.databinding.ActivityMainBinding
 
@@ -48,10 +46,6 @@ class MainActivity : AppCompatActivity() {
                     val prefs = getSharedPreferences(getString(R.string.prefs_file), Context.MODE_PRIVATE).edit()
                     prefs.clear()
                     prefs.apply()
-
-                    if (provider == ProviderTypes.FACEBOOK.name){
-                        LoginManager.getInstance().logOut()
-                    }
 
                     FirebaseAuth.getInstance().signOut()
                     val i = Intent(this, AuthActivity::class.java).apply {
@@ -104,7 +98,7 @@ class MainActivity : AppCompatActivity() {
         firebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_ITEM) {
             this.param(FirebaseAnalytics.Param.ITEM_ID, id)
             this.param(FirebaseAnalytics.Param.ITEM_NAME, name)
-            this.param(FirebaseAnalytics.Param.CONTENT_TYPE, "image")
+            this.param(FirebaseAnalytics.Param.CONTENT_TYPE, content)
         }
     }
 }
