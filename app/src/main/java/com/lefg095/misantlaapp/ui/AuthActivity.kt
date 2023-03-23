@@ -6,15 +6,9 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import com.facebook.CallbackManager
-import com.facebook.FacebookCallback
-import com.facebook.FacebookException
-import com.facebook.login.LoginManager
-import com.facebook.login.LoginResult
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
-import com.google.firebase.auth.FacebookAuthProvider
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
 import com.lefg095.misantlaapp.util.ProviderTypes
@@ -26,8 +20,6 @@ import com.lefg095.misantlaapp.util.alertAuth
 class AuthActivity: AppCompatActivity() {
     private lateinit var binding: LoginActivityBinding
     private val GOOGLE_SIGN_IN = 100
-    private val callbackManager = CallbackManager.Factory.create()
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         setTheme(R.style.Theme_MisantlaAppNoBar)
@@ -98,7 +90,6 @@ class AuthActivity: AppCompatActivity() {
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        callbackManager.onActivityResult(requestCode, resultCode, data)
         super.onActivityResult(requestCode, resultCode, data)
 
         if (requestCode == GOOGLE_SIGN_IN) {
