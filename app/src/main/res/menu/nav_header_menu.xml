@@ -16,7 +16,7 @@
 
     </group>
 
-    <item android:title="Más">
+    <!--item android:title="Más">
         <menu>
 
             <item
@@ -24,6 +24,6 @@
                 android:icon="@drawable/ic_cerrar_sesion"
                 android:title="Cerrar sesión"/>
         </menu>
-    </item>
+    </item-->
 
 </menu>

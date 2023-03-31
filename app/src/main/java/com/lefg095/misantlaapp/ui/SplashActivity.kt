@@ -25,16 +25,16 @@ class SplashActivity: AppCompatActivity() {
 
     private fun session() {
         val prefs = getSharedPreferences(getString(R.string.prefs_file), Context.MODE_PRIVATE)
-        val email = prefs.getString("email", null)
-        val provider = prefs.getString("provider", null)
+        val email = prefs.getString("email", "") ?: ""
+        val provider = prefs.getString("provider", "")?: ""
 
-        if (email != null && provider != null) {
+        //if (email != null && provider != null) {
             binding.authLayout.setBackgroundColor(ContextCompat.getColor(this, R.color.blue_4ever))
             binding.authLayout.visibility = View.INVISIBLE
             showHome(email, ProviderTypes.valueOf(provider))
-        }else{
-            showLogScream()
-        }
+//        }else{
+//            showLogScream()
+//        }
     }
 
     private fun showHome(email: String, provider: ProviderTypes) {
