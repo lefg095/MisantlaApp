@@ -40,14 +40,6 @@ class ListBusinessFragment : Fragment() {
 
     private fun getData(businessType: String) {
         val businessDataArrayList: ArrayList<BusinessData> = arrayListOf()
-        var numberAdmin = ""
-        db.collection("dataApp").get().addOnSuccessListener { result ->
-            for (document in result) {
-                numberAdmin = "${document.data["numeroReporte"]}"
-            }
-        }.addOnFailureListener {
-            Log.e("Firestore_dataApp_", "Error al optener datos")
-        }
         db.collection(businessType).get().addOnSuccessListener { result ->
             for (documento in result) {
                 val showData = documento.data["mostrar"]

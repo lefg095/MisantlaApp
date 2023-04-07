@@ -3,26 +3,34 @@ package com.lefg095.misantlaapp.ui
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
+import com.google.firebase.analytics.FirebaseAnalytics
+import com.google.firebase.analytics.ktx.analytics
+import com.google.firebase.analytics.ktx.logEvent
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
+import com.google.firebase.ktx.Firebase
 import com.lefg095.misantlaapp.util.ProviderTypes
 import com.lefg095.misantlaapp.R
 import com.lefg095.misantlaapp.databinding.LoginActivityBinding
 import com.lefg095.misantlaapp.util.alertAuth
+import com.lefg095.misantlaapp.util.alertWarning
 
 
 class AuthActivity: AppCompatActivity() {
+    private lateinit var firebaseAnalytics: FirebaseAnalytics
     private lateinit var binding: LoginActivityBinding
     private val GOOGLE_SIGN_IN = 100
 
     override fun onCreate(savedInstanceState: Bundle?) {
         setTheme(R.style.Theme_MisantlaAppNoBar)
+        firebaseAnalytics = Firebase.analytics
         super.onCreate(savedInstanceState)
         binding = LoginActivityBinding.inflate(layoutInflater)
         val view = binding.root
@@ -49,10 +57,10 @@ class AuthActivity: AppCompatActivity() {
 
     private fun session() {
         val prefs = getSharedPreferences(getString(R.string.prefs_file), Context.MODE_PRIVATE)
-        val email = prefs.getString("email", null)
-        val provider = prefs.getString("provider", null)
+        val email = prefs.getString("email", "") ?: ""
+        val provider = prefs.getString("provider", "DEFAULT") ?: "DEFAULT"
 
-        if (email != null && provider != null) {
+        if (email.isNotEmpty() && provider.isNotEmpty()) {
             binding.authLayout.setBackgroundColor(ContextCompat.getColor(this, R.color.blue_4ever))
             binding.authLayout.visibility = View.INVISIBLE
             showHome(email, ProviderTypes.valueOf(provider))
@@ -61,6 +69,9 @@ class AuthActivity: AppCompatActivity() {
 
     private fun setup() {
         title = "Authentication"
+        val pInfo = applicationContext.packageManager.getPackageInfo(packageName, 0)
+        val version: String = pInfo.versionName
+        binding.tvLogVersion.text = getString(R.string.vs_str, version)
         binding.btnGogleAuth.setOnClickListener {
             //Configuracion
             val googleConf = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -75,9 +86,11 @@ class AuthActivity: AppCompatActivity() {
         }
         binding.btnLogin.setOnClickListener {
             if (binding.itEmail.text!!.isNotEmpty() && binding.itPassword.text!!.isNotEmpty()){
+                val usr = binding.itEmail.text.toString().trim()
+                val pass = binding.itPassword.text.toString().trim()
                 FirebaseAuth.getInstance().signInWithEmailAndPassword(
-                    binding.itEmail.text.toString(),
-                    binding.itPassword.text.toString()
+                    usr,
+                    pass
                 ).addOnCompleteListener {
                     if (it.isSuccessful){
                         showHome(binding.itEmail.text.toString(), ProviderTypes.BASIC)
@@ -85,6 +98,26 @@ class AuthActivity: AppCompatActivity() {
                         alertAuth(this)
                     }
                 }
+            } else {
+                alertWarning(this, "Alerta", "Ingrese un usuario y contraseña")
+            }
+        }
+        binding.btnRegistrarse.setOnClickListener {
+            if (binding.itEmail.text!!.isNotEmpty() && binding.itPassword.text!!.isNotEmpty()){
+                val usr = binding.itEmail.text.toString().trim()
+                val pass = binding.itPassword.text.toString().trim()
+                FirebaseAuth.getInstance().createUserWithEmailAndPassword(
+                    usr, pass
+                ).addOnCompleteListener {
+                    if (it.isSuccessful){
+                        showHome(binding.itEmail.text.toString(), ProviderTypes.BASIC)
+                    } else {
+                        alertAuth(this)
+                    }
+                }
+
+            } else {
+                alertWarning(this, "Alerta", "Ingrese un usuario y contraseña")
             }
         }
     }
@@ -109,6 +142,8 @@ class AuthActivity: AppCompatActivity() {
                     }
                 }
             } catch (e: ApiException) {
+                tracker("Error", "Login", "$e")
+                Log.e("Login", "$e")
                 alertAuth(this)
             }
 
@@ -122,5 +157,13 @@ class AuthActivity: AppCompatActivity() {
         }
         startActivity(homeIntent)
         finish()
+    }
+
+    private fun tracker(id: String, name: String, content: String){
+        firebaseAnalytics.logEvent(FirebaseAnalytics.Event.LOGIN) {
+            this.param(FirebaseAnalytics.Param.ITEM_ID, id)
+            this.param(FirebaseAnalytics.Param.ITEM_NAME, name)
+            this.param(FirebaseAnalytics.Param.CONTENT_TYPE, content)
+        }
     }
 }

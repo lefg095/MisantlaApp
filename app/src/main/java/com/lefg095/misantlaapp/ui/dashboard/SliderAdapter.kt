@@ -16,8 +16,6 @@ class SliderAdapter(
     private val mSliderItems: List<SliderData>
 ) : SliderViewAdapter<SliderAdapter.Holder>() {
 
-    lateinit var slideDefault: SliderData
-
     override fun onCreateViewHolder(parent: ViewGroup): Holder {
         val inflate = LayoutInflater.from(parent.context)
             .inflate(R.layout.item_slider, parent, false)
@@ -37,7 +35,6 @@ class SliderAdapter(
         private val binding = ItemSliderBinding.bind(view)
         fun bind(slider: SliderData){
             val dateFormat = SimpleDateFormat("dd/MM/yyyy")
-            //SimpleDateFormat("MM/dd/yyyy")
             val dateToday = Date()
             val dateEndSlide = dateFormat.parse(slider.dateEnd)
 

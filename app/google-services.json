@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "311277729547-ua15sr5bg5k8gofe2pv4gilfcsfuvtc1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.lefg095.misantlaapp",
+            "certificate_hash": "34272c75597933d8d70a120d63fc4485f2b18e6e"
+          }
+        },
+        {
           "client_id": "311277729547-0fcbk96692glchb491g8bslmidhav0bq.apps.googleusercontent.com",
           "client_type": 3
         }

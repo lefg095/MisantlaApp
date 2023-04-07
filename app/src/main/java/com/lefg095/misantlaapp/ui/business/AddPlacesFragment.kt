@@ -81,19 +81,6 @@ class AddPlacesFragment: Fragment() {
     }
 
     private fun saveData(){
-        nombre = binding.etNombre.text.toString()
-        shortDesc = binding.etShortDesc.text.toString()
-        longDesc = binding.etLongDesc.text.toString()
-        location = binding.etUbicacion.text.toString()
-        facebook = binding.etUrlFacebook.text.toString()
-        instagram = binding.etUrlInstagra.text.toString()
-        numCalling = binding.etNumCalling.text.toString()
-        numWhatsapp = binding.etNumWhatsapp.text.toString()
-        numContacto = binding.etNumContacto.text.toString()
-        nameContact = binding.etNombreContacto.text.toString()
-        servEntrega = binding.chbServEntrega.isChecked.zeroOrOneChange()
-        servLocal = binding.chbServLocal.isChecked.zeroOrOneChange()
-        horario = binding.etHorario.text.toString()
 
         if (searchData()){
             if (validateFields()) {
@@ -225,6 +212,19 @@ class AddPlacesFragment: Fragment() {
     }
 
     private fun validateFields(): Boolean{
+        nombre = binding.etNombre.text.toString()
+        shortDesc = binding.etShortDesc.text.toString()
+        longDesc = binding.etLongDesc.text.toString()
+        location = binding.etUbicacion.text.toString()
+        facebook = binding.etUrlFacebook.text.toString()
+        instagram = binding.etUrlInstagra.text.toString()
+        numCalling = binding.etNumCalling.text.toString()
+        numWhatsapp = binding.etNumWhatsapp.text.toString()
+        numContacto = binding.etNumContacto.text.toString()
+        nameContact = binding.etNombreContacto.text.toString()
+        servEntrega = binding.chbServEntrega.isChecked.zeroOrOneChange()
+        servLocal = binding.chbServLocal.isChecked.zeroOrOneChange()
+        horario = binding.etHorario.text.toString()
 
         return when{
             !nombre.validateText() -> {
