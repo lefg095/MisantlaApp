@@ -28,15 +28,15 @@ class SplashActivity: AppCompatActivity() {
         val email = prefs.getString("email", "") ?: ""
         val provider = prefs.getString("provider", "DEFAULT")?: "DEFAULT"
 
-        showHome(email, ProviderTypes.valueOf(provider))
+        //showHome(email, ProviderTypes.valueOf(provider))
 
-//        if (email.isNotEmpty() && provider.isNotEmpty()) {
-//            binding.authLayout.setBackgroundColor(ContextCompat.getColor(this, R.color.blue_4ever))
-//            binding.authLayout.visibility = View.INVISIBLE
-//            showHome(email, ProviderTypes.valueOf(provider))
-//        }else{
-//            showLogScream()
-//        }
+        if (email.isNotEmpty() && provider.isNotEmpty()) {
+            binding.authLayout.setBackgroundColor(ContextCompat.getColor(this, R.color.blue_4ever))
+            binding.authLayout.visibility = View.INVISIBLE
+            showHome(email, ProviderTypes.valueOf(provider))
+        }else{
+            showLogScream()
+        }
     }
 
     private fun showHome(email: String, provider: ProviderTypes) {

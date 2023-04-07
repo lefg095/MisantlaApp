@@ -41,18 +41,18 @@ class MainActivity : AppCompatActivity() {
         binding.navView.setNavigationItemSelectedListener {
             when(it.itemId){
                 //R.id.it_config -> Toast.makeText(applicationContext, "Item one", Toast.LENGTH_LONG).show()
-//                R.id.it_close_session->{
-//                    //Borrado de datos
-//                    val prefs = getSharedPreferences(getString(R.string.prefs_file), Context.MODE_PRIVATE).edit()
-//                    prefs.clear()
-//                    prefs.apply()
-//
-//                    FirebaseAuth.getInstance().signOut()
-//                    val i = Intent(this, AuthActivity::class.java).apply {
-//                    }
-//                    startActivity(i)
-//                    finish()
-//                }
+                R.id.it_close_session->{
+                    //Borrado de datos
+                    val prefs = getSharedPreferences(getString(R.string.prefs_file), Context.MODE_PRIVATE).edit()
+                    prefs.clear()
+                    prefs.apply()
+
+                    FirebaseAuth.getInstance().signOut()
+                    val i = Intent(this, AuthActivity::class.java).apply {
+                    }
+                    startActivity(i)
+                    finish()
+                }
                 R.id.it_about_this->{
                     tracker("it_about_this", "btn_acerca_de","click")
                     val i = Intent(this, AboutActivity::class.java).apply {
