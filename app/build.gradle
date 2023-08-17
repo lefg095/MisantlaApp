@@ -20,8 +20,8 @@ android {
         applicationId "com.lefg095.misantlaapp"
         minSdk 21
         targetSdk 31
-        versionCode 22
-        versionName "1.12"
+        versionCode 24
+        versionName "1.14"
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
@@ -50,6 +50,7 @@ dependencies {
     implementation 'com.google.android.material:material:1.4.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.2'
     implementation 'com.google.android.gms:play-services-ads:20.0.0'
+    implementation 'com.google.android.play:app-update-ktx:2.0.1'
 
     //Testing
     testImplementation 'junit:junit:4.13.2'
@@ -76,7 +77,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-storage-ktx'
     implementation 'com.google.firebase:firebase-crashlytics-ktx'
 
-    implementation 'com.google.android.gms:play-services-auth:20.4.1'
+    implementation 'com.google.android.gms:play-services-auth:20.5.0'
     implementation 'androidx.work:work-runtime-ktx:2.7.1'
 
 

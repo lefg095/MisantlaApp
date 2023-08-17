@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
+import androidx.recyclerview.widget.GridLayoutManager
 import com.google.android.gms.ads.AdRequest
 import com.google.firebase.firestore.FirebaseFirestore
 import com.lefg095.misantlaapp.R
@@ -67,25 +68,52 @@ class DashboardFragment : Fragment(){
             Log.e("Firestore_", "Error al optener datos_$exception")
         }
 
-        binding.btn1.setOnClickListener {
-            showListBusiness(TOURISM)
-        }
-        binding.btn2.setOnClickListener {
-            showListBusiness(FOOD)
-        }
-        binding.btn3.setOnClickListener {
-            showListBusiness(BOUTIQUES)
-        }
-        binding.btn4.setOnClickListener {
-            showListBusiness(GROCERIES)
-        }
-        binding.btn5.setOnClickListener {
-            showListBusiness(SCHOOLS)
-        }
-        binding.btn6.setOnClickListener {
-            showListBusiness(SERVICES)
+        db.collection("dataApp").get().addOnSuccessListener { result ->
+            for (document in result) {
+                val placeList = document.data["list_tipos"].toString()
+
+                setPlaceList(placeList)
+
+                break
+            }
+        }.addOnFailureListener { exception ->
+            Log.e("Firestore_", "Error al optener datos_$exception")
         }
 
+//        binding.btn1.setOnClickListener {
+//            showListBusiness(TOURISM)
+//        }
+//        binding.btn2.setOnClickListener {
+//            showListBusiness(FOOD)
+//        }
+//        binding.btn3.setOnClickListener {
+//            showListBusiness(BOUTIQUES)
+//        }
+//        binding.btn4.setOnClickListener {
+//            showListBusiness(GROCERIES)
+//        }
+//        binding.btn5.setOnClickListener {
+//            showListBusiness(SCHOOLS)
+//        }
+//        binding.btn6.setOnClickListener {
+//            showListBusiness(SERVICES)
+//        }
+
+    }
+
+    private fun setPlaceList(placeList: String){
+        val places = placeList.split(",")
+        for (place in places) {
+            Log.i("places", "places: ${place.trim()}")
+
+            showButtons(places)
+        }
+    }
+
+    private fun showButtons(places: List<String>){
+        val adapter = ButtonsPlacesAdapter(places, requireContext())
+        binding.rvListButtons.layoutManager = GridLayoutManager(requireContext(), 3)
+        binding.rvListButtons.adapter = adapter
     }
 
     private fun loadAdds() {

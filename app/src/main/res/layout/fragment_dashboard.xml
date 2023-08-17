@@ -47,180 +47,228 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/slider" />
 
-    <ImageButton
-        android:id="@+id/btn1"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/ly_content"
         android:layout_width="0dp"
-        android:layout_height="100dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginStart="50dp"
-        android:background="@drawable/roun_btn30"
-        android:scaleType="fitCenter"
-        android:src="@drawable/turismo2"
-        app:layout_constraintStart_toStartOf="@+id/tvDescrip"
-        app:layout_constraintTop_toBottomOf="@+id/tvDescrip"
-        app:layout_constraintWidth_percent="0.25" />
-
-    <TextView
-        android:id="@+id/tv_btn1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TURISMO"
-        android:paddingStart="4dp"
-        android:paddingEnd="4dp"
-        android:fontFamily="sans-serif-medium"
-        android:background="@drawable/roun_btn30"
-        android:backgroundTint="@color/grey_font"
-        android:textStyle="bold"
-        android:textColor="@color/black"
-        app:layout_constraintBottom_toBottomOf="@+id/btn1"
-        app:layout_constraintEnd_toEndOf="@+id/btn1"
-        app:layout_constraintStart_toStartOf="@+id/btn1" />
-
-    <ImageButton
-        android:id="@+id/btn2"
-        android:layout_width="0dp"
-        android:layout_height="100dp"
-        android:background="@drawable/roun_btn30"
-        android:scaleType="fitCenter"
-        android:src="@drawable/comida2"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/adView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/btn1"
-        app:layout_constraintTop_toTopOf="@+id/btn1"
-        app:layout_constraintWidth_percent="0.25" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvDescrip">
 
-    <TextView
-        android:id="@+id/tv_btn2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="COMIDA"
-        android:paddingStart="4dp"
-        android:paddingEnd="4dp"
-        android:fontFamily="sans-serif-medium"
-        android:background="@drawable/roun_btn30"
-        android:backgroundTint="@color/grey_font"
-        android:textStyle="bold"
-        android:textColor="@color/black"
-        app:layout_constraintBottom_toBottomOf="@+id/btn2"
-        app:layout_constraintEnd_toEndOf="@+id/btn2"
-        app:layout_constraintStart_toStartOf="@+id/btn2" />
+        <ScrollView
+            android:id="@+id/sv_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-    <ImageButton
-        android:id="@+id/btn3"
-        android:layout_width="0dp"
-        android:layout_height="100dp"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/roun_btn30"
-        android:scaleType="fitCenter"
-        android:src="@drawable/boutique3"
-        app:layout_constraintEnd_toEndOf="@+id/btn1"
-        app:layout_constraintStart_toStartOf="@+id/btn1"
-        app:layout_constraintTop_toBottomOf="@+id/btn1"
-        app:layout_constraintWidth_percent="0.25" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/ly_content_secundary"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
-    <TextView
-        android:id="@+id/tv_btn3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="BOUTIQUES"
-        android:paddingStart="4dp"
-        android:paddingEnd="4dp"
-        android:fontFamily="sans-serif-medium"
-        android:background="@drawable/roun_btn30"
-        android:backgroundTint="@color/grey_font"
-        android:textStyle="bold"
-        android:textColor="@color/black"
-        app:layout_constraintBottom_toBottomOf="@+id/btn3"
-        app:layout_constraintEnd_toEndOf="@+id/btn3"
-        app:layout_constraintStart_toStartOf="@+id/btn3" />
+<!--                    <ImageButton-->
+<!--                        android:id="@+id/btn1"-->
+<!--                        android:layout_width="0dp"-->
+<!--                        android:layout_height="100dp"-->
+<!--                        android:layout_marginStart="50dp"-->
+<!--                        android:layout_marginTop="20dp"-->
+<!--                        android:background="@drawable/roun_btn30"-->
+<!--                        android:scaleType="fitCenter"-->
+<!--                        android:src="@drawable/turismo2"-->
+<!--                        app:layout_constraintStart_toStartOf="parent"-->
+<!--                        app:layout_constraintTop_toTopOf="parent"-->
+<!--                        app:layout_constraintWidth_percent="0.25" />-->
 
-    <ImageButton
-        android:id="@+id/btn4"
-        android:layout_width="0dp"
-        android:layout_height="100dp"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/roun_btn30"
-        android:backgroundTint="@color/grey"
-        android:paddingBottom="8dp"
-        android:src="@drawable/groceries"
-        app:layout_constraintEnd_toEndOf="@+id/btn2"
-        app:layout_constraintStart_toStartOf="@+id/btn2"
-        app:layout_constraintTop_toBottomOf="@+id/btn2"
-        app:layout_constraintWidth_percent="0.25" />
+<!--                    <TextView-->
+<!--                        android:id="@+id/tv_btn1"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:background="@drawable/roun_btn30"-->
+<!--                        android:backgroundTint="@color/grey_font"-->
+<!--                        android:fontFamily="sans-serif-medium"-->
+<!--                        android:paddingStart="4dp"-->
+<!--                        android:paddingEnd="4dp"-->
+<!--                        android:text="TURISMO"-->
+<!--                        android:textColor="@color/black"-->
+<!--                        android:textStyle="bold"-->
+<!--                        app:layout_constraintBottom_toBottomOf="@+id/btn1"-->
+<!--                        app:layout_constraintEnd_toEndOf="@+id/btn1"-->
+<!--                        app:layout_constraintStart_toStartOf="@+id/btn1" />-->
 
-    <TextView
-        android:id="@+id/tv_btn4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="ABARROTES"
-        android:paddingStart="4dp"
-        android:paddingEnd="4dp"
-        android:fontFamily="sans-serif-medium"
-        android:background="@drawable/roun_btn30"
-        android:backgroundTint="@color/grey_font"
-        android:textStyle="bold"
-        android:textColor="@color/black"
-        app:layout_constraintBottom_toBottomOf="@+id/btn4"
-        app:layout_constraintEnd_toEndOf="@+id/btn4"
-        app:layout_constraintStart_toStartOf="@+id/btn4" />
+<!--                    <ImageButton-->
+<!--                        android:id="@+id/btn2"-->
+<!--                        android:layout_width="0dp"-->
+<!--                        android:layout_height="100dp"-->
+<!--                        android:background="@drawable/roun_btn30"-->
+<!--                        android:scaleType="fitCenter"-->
+<!--                        android:src="@drawable/comida2"-->
+<!--                        app:layout_constraintEnd_toEndOf="parent"-->
+<!--                        app:layout_constraintStart_toEndOf="@+id/btn1"-->
+<!--                        app:layout_constraintTop_toTopOf="@+id/btn1"-->
+<!--                        app:layout_constraintWidth_percent="0.25" />-->
 
-    <ImageButton
-        android:id="@+id/btn5"
-        android:layout_width="0dp"
-        android:layout_height="100dp"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/roun_btn30"
-        android:src="@drawable/escuelas1"
-        android:scaleType="fitCenter"
-        app:layout_constraintEnd_toEndOf="@+id/btn1"
-        app:layout_constraintStart_toStartOf="@+id/btn1"
-        app:layout_constraintTop_toBottomOf="@+id/btn3"
-        app:layout_constraintWidth_percent="0.25" />
+<!--                    <TextView-->
+<!--                        android:id="@+id/tv_btn2"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:background="@drawable/roun_btn30"-->
+<!--                        android:backgroundTint="@color/grey_font"-->
+<!--                        android:fontFamily="sans-serif-medium"-->
+<!--                        android:paddingStart="4dp"-->
+<!--                        android:paddingEnd="4dp"-->
+<!--                        android:text="COMIDA"-->
+<!--                        android:textColor="@color/black"-->
+<!--                        android:textStyle="bold"-->
+<!--                        app:layout_constraintBottom_toBottomOf="@+id/btn2"-->
+<!--                        app:layout_constraintEnd_toEndOf="@+id/btn2"-->
+<!--                        app:layout_constraintStart_toStartOf="@+id/btn2"/>-->
 
-    <TextView
-        android:id="@+id/tv_btn5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="ESCUELAS"
-        android:paddingStart="4dp"
-        android:paddingEnd="4dp"
-        android:fontFamily="sans-serif-medium"
-        android:background="@drawable/roun_btn30"
-        android:backgroundTint="@color/grey_font"
-        android:textStyle="bold"
-        android:textColor="@color/black"
-        app:layout_constraintBottom_toBottomOf="@+id/btn5"
-        app:layout_constraintEnd_toEndOf="@+id/btn5"
-        app:layout_constraintStart_toStartOf="@+id/btn5" />
+<!--                    <ImageButton-->
+<!--                        android:id="@+id/btn3"-->
+<!--                        android:layout_width="0dp"-->
+<!--                        android:layout_height="100dp"-->
+<!--                        android:layout_marginTop="16dp"-->
+<!--                        android:background="@drawable/roun_btn30"-->
+<!--                        android:scaleType="fitCenter"-->
+<!--                        android:src="@drawable/boutique3"-->
+<!--                        app:layout_constraintEnd_toEndOf="@+id/btn1"-->
+<!--                        app:layout_constraintStart_toStartOf="@+id/btn1"-->
+<!--                        app:layout_constraintTop_toBottomOf="@+id/btn1"-->
+<!--                        app:layout_constraintWidth_percent="0.25" />-->
 
-    <ImageButton
-        android:id="@+id/btn6"
-        android:layout_width="0dp"
-        android:layout_height="100dp"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/roun_btn30"
-        android:backgroundTint="@color/teal_200"
-        android:paddingBottom="12dp"
-        android:src="@drawable/service"
-        app:layout_constraintEnd_toEndOf="@+id/btn4"
-        app:layout_constraintStart_toStartOf="@+id/btn4"
-        app:layout_constraintTop_toBottomOf="@+id/btn4"
-        app:layout_constraintWidth_percent="0.25"/>
+<!--                    <TextView-->
+<!--                        android:id="@+id/tv_btn3"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:background="@drawable/roun_btn30"-->
+<!--                        android:backgroundTint="@color/grey_font"-->
+<!--                        android:fontFamily="sans-serif-medium"-->
+<!--                        android:paddingStart="4dp"-->
+<!--                        android:paddingEnd="4dp"-->
+<!--                        android:text="BOUTIQUES"-->
+<!--                        android:textColor="@color/black"-->
+<!--                        android:textStyle="bold"-->
+<!--                        app:layout_constraintBottom_toBottomOf="@+id/btn3"-->
+<!--                        app:layout_constraintEnd_toEndOf="@+id/btn3"-->
+<!--                        app:layout_constraintStart_toStartOf="@+id/btn3" />-->
 
-    <TextView
-        android:id="@+id/tv_btn6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="OTROS"
-        android:paddingStart="4dp"
-        android:paddingEnd="4dp"
-        android:fontFamily="sans-serif-medium"
-        android:background="@drawable/roun_btn30"
-        android:backgroundTint="@color/grey_font"
-        android:textStyle="bold"
-        android:textColor="@color/black"
-        app:layout_constraintBottom_toBottomOf="@+id/btn6"
-        app:layout_constraintEnd_toEndOf="@+id/btn6"
-        app:layout_constraintStart_toStartOf="@+id/btn6" />
+<!--                    <ImageButton-->
+<!--                        android:id="@+id/btn4"-->
+<!--                        android:layout_width="0dp"-->
+<!--                        android:layout_height="100dp"-->
+<!--                        android:layout_marginTop="16dp"-->
+<!--                        android:background="@drawable/roun_btn30"-->
+<!--                        android:backgroundTint="@color/grey"-->
+<!--                        android:paddingBottom="8dp"-->
+<!--                        android:src="@drawable/groceries"-->
+<!--                        app:layout_constraintEnd_toEndOf="@+id/btn2"-->
+<!--                        app:layout_constraintStart_toStartOf="@+id/btn2"-->
+<!--                        app:layout_constraintTop_toBottomOf="@+id/btn2"-->
+<!--                        app:layout_constraintWidth_percent="0.25" />-->
+
+<!--                    <TextView-->
+<!--                        android:id="@+id/tv_btn4"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:background="@drawable/roun_btn30"-->
+<!--                        android:backgroundTint="@color/grey_font"-->
+<!--                        android:fontFamily="sans-serif-medium"-->
+<!--                        android:paddingStart="4dp"-->
+<!--                        android:paddingEnd="4dp"-->
+<!--                        android:text="ABARROTES"-->
+<!--                        android:textColor="@color/black"-->
+<!--                        android:textStyle="bold"-->
+<!--                        app:layout_constraintBottom_toBottomOf="@+id/btn4"-->
+<!--                        app:layout_constraintEnd_toEndOf="@+id/btn4"-->
+<!--                        app:layout_constraintStart_toStartOf="@+id/btn4" />-->
+
+<!--                    <ImageButton-->
+<!--                        android:id="@+id/btn5"-->
+<!--                        android:layout_width="0dp"-->
+<!--                        android:layout_height="100dp"-->
+<!--                        android:layout_marginTop="16dp"-->
+<!--                        android:background="@drawable/roun_btn30"-->
+<!--                        android:scaleType="fitCenter"-->
+<!--                        android:src="@drawable/escuelas1"-->
+<!--                        app:layout_constraintEnd_toEndOf="@+id/btn1"-->
+<!--                        app:layout_constraintStart_toStartOf="@+id/btn1"-->
+<!--                        app:layout_constraintTop_toBottomOf="@+id/btn3"-->
+<!--                        app:layout_constraintWidth_percent="0.25" />-->
+
+<!--                    <TextView-->
+<!--                        android:id="@+id/tv_btn5"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:background="@drawable/roun_btn30"-->
+<!--                        android:backgroundTint="@color/grey_font"-->
+<!--                        android:fontFamily="sans-serif-medium"-->
+<!--                        android:paddingStart="4dp"-->
+<!--                        android:paddingEnd="4dp"-->
+<!--                        android:text="ESCUELAS"-->
+<!--                        android:textColor="@color/black"-->
+<!--                        android:textStyle="bold"-->
+<!--                        app:layout_constraintBottom_toBottomOf="@+id/btn5"-->
+<!--                        app:layout_constraintEnd_toEndOf="@+id/btn5"-->
+<!--                        app:layout_constraintStart_toStartOf="@+id/btn5" />-->
+
+<!--                    <ImageButton-->
+<!--                        android:id="@+id/btn6"-->
+<!--                        android:layout_width="0dp"-->
+<!--                        android:layout_height="100dp"-->
+<!--                        android:layout_marginTop="16dp"-->
+<!--                        android:background="@drawable/roun_btn30"-->
+<!--                        android:backgroundTint="@color/teal_200"-->
+<!--                        android:paddingBottom="12dp"-->
+<!--                        android:src="@drawable/service"-->
+<!--                        app:layout_constraintEnd_toEndOf="@+id/btn4"-->
+<!--                        app:layout_constraintStart_toStartOf="@+id/btn4"-->
+<!--                        app:layout_constraintTop_toBottomOf="@+id/btn4"-->
+<!--                        app:layout_constraintWidth_percent="0.25" />-->
+
+<!--                    <TextView-->
+<!--                        android:id="@+id/tv_btn6"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:background="@drawable/roun_btn30"-->
+<!--                        android:backgroundTint="@color/grey_font"-->
+<!--                        android:fontFamily="sans-serif-medium"-->
+<!--                        android:paddingStart="4dp"-->
+<!--                        android:paddingEnd="4dp"-->
+<!--                        android:text="OTROS"-->
+<!--                        android:textColor="@color/black"-->
+<!--                        android:textStyle="bold"-->
+<!--                        app:layout_constraintBottom_toBottomOf="@+id/btn6"-->
+<!--                        app:layout_constraintEnd_toEndOf="@+id/btn6"-->
+<!--                        app:layout_constraintStart_toStartOf="@+id/btn6" />-->
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_list_buttons"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="16dp"
+                    android:layout_gravity="center_horizontal"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:listitem="@layout/item_btn_place" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </ScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
 
     <!--ca-app-pub-3545246479745746/8342199925-->
     <com.google.android.gms.ads.AdView
@@ -228,7 +276,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         ads:adSize="BANNER"
-        ads:adUnitId="ca-app-pub-3545246479745746/83 42199925"
+        ads:adUnitId="ca-app-pub-3545246479745746/8342199925"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

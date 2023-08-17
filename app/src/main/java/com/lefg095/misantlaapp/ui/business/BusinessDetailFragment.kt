@@ -76,7 +76,7 @@ class BusinessDetailFragment : Fragment() {
             binding.tvHorario.visibility = View.VISIBLE
             binding.tvHorario.text = getString(R.string.timetable_detail_str, businessData.horario)
         }
-        if (businessType == FOOD && businessData.servEntrega != "" && businessData.servLocal != ""){
+        if (businessData.servEntrega != "" && businessData.servLocal != ""){
             binding.cardServices.visibility = View.VISIBLE
             when(businessData.servEntrega){
                 "1"->{

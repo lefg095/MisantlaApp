@@ -24,7 +24,7 @@
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/crd_img"
-                android:layout_width="0dp"
+                android:layout_width="75dp"
                 android:layout_height="75dp"
                 android:layout_gravity="center"
                 android:layout_margin="4dp"

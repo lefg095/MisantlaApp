@@ -8,3 +8,4 @@ const val GROCERIES ="abarrotes"
 const val SCHOOLS ="escuelas"
 const val SERVICES ="servicios"
 const val FILE = 1
+const val UPDATE_REQUEST_CODE = 2510
