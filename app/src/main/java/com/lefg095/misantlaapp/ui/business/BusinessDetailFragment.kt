@@ -9,17 +9,24 @@ import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
+import com.google.android.gms.ads.AdError
 import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.FullScreenContentCallback
+import com.google.android.gms.ads.LoadAdError
+import com.google.android.gms.ads.interstitial.InterstitialAd
+import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
 import com.lefg095.misantlaapp.R
 import com.lefg095.misantlaapp.databinding.FragmentBusinessdetailBinding
 import com.lefg095.misantlaapp.model.BusinessData
 import com.lefg095.misantlaapp.util.FOOD
+import com.lefg095.misantlaapp.util.ID_PROD_INSTERTITIAL
 import com.lefg095.misantlaapp.util.TOURISM
 import com.squareup.picasso.Picasso
 
 
 class BusinessDetailFragment : Fragment() {
     private lateinit var binding: FragmentBusinessdetailBinding
+    private var intertitialAdd: InterstitialAd? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -37,6 +44,7 @@ class BusinessDetailFragment : Fragment() {
         val businessData = bundle!!.get("businessData") as BusinessData
         val businessType = bundle.get("businessType") as String
         setData(businessData, businessType)
+
     }
 
     private fun loadAdds() {

@@ -9,18 +9,27 @@ import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.gms.ads.AdError
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.FullScreenContentCallback
+import com.google.android.gms.ads.LoadAdError
+import com.google.android.gms.ads.interstitial.InterstitialAd
+import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
 import com.google.firebase.firestore.FirebaseFirestore
 import com.lefg095.misantlaapp.R
 import com.lefg095.misantlaapp.databinding.FragmentListbusinessBinding
 import com.lefg095.misantlaapp.model.BusinessData
 import com.lefg095.misantlaapp.ui.business.adapter.BusinessAdapter
+import com.lefg095.misantlaapp.ui.business.callback.ItemBusinessCallback
+import com.lefg095.misantlaapp.util.ID_PROD_INSTERTITIAL
 import com.lefg095.misantlaapp.util.alertError
 import com.lefg095.misantlaapp.util.alertWarning
 
-class ListBusinessFragment : Fragment() {
+class ListBusinessFragment : Fragment(), ItemBusinessCallback {
     private lateinit var binding: FragmentListbusinessBinding
     private val db = FirebaseFirestore.getInstance()
     private var adapter: BusinessAdapter? = null
+    private var intertitialAdd: InterstitialAd? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -36,6 +45,38 @@ class ListBusinessFragment : Fragment() {
         val businessType = arguments?.get("businessType").toString()
         getData(businessType)
         showLoading()
+        initAdd()
+    }
+
+    private fun initAddListeners() {
+        intertitialAdd?.fullScreenContentCallback = object : FullScreenContentCallback() {
+            override fun onAdDismissedFullScreenContent() {
+            }
+
+            override fun onAdFailedToShowFullScreenContent(p0: AdError) {
+            }
+
+            override fun onAdShowedFullScreenContent() {
+                intertitialAdd = null
+            }
+        }
+    }
+
+    private fun showAdds(){
+        intertitialAdd?.show(requireActivity())
+    }
+
+    private fun initAdd(){
+        val adRequest = AdRequest.Builder().build()
+        InterstitialAd.load(requireContext(), ID_PROD_INSTERTITIAL, adRequest, object : InterstitialAdLoadCallback(){
+            override fun onAdLoaded(interstitialAd: InterstitialAd) {
+                intertitialAdd = interstitialAd
+            }
+
+            override fun onAdFailedToLoad(p0: LoadAdError) {
+                intertitialAdd = null
+            }
+        })
     }
 
     private fun getData(businessType: String) {
@@ -94,7 +135,7 @@ class ListBusinessFragment : Fragment() {
 
     private fun initRecyclerViewBusiness(businnesArrayList: ArrayList<BusinessData>, businessType: String) {
         binding.rvBusinnessList.layoutManager = LinearLayoutManager(requireContext())
-        adapter = BusinessAdapter(businnesArrayList, businessType)
+        adapter = BusinessAdapter(businnesArrayList, businessType, this)
         binding.rvBusinnessList.adapter = adapter
         binding.fbAdd.visibility = View.VISIBLE
         binding.fbAdd.setOnClickListener {
@@ -105,5 +146,10 @@ class ListBusinessFragment : Fragment() {
             view?.findNavController()?.navigate(R.id.add_places, businessBundle)
         }
         hideLoading(3.0)
+    }
+    override fun showAd() {
+        showAdds()
+        initAdd()
+        initAddListeners()
     }
 }

@@ -9,11 +9,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.lefg095.misantlaapp.R
 import com.lefg095.misantlaapp.databinding.ItemBussineBinding
 import com.lefg095.misantlaapp.model.BusinessData
+import com.lefg095.misantlaapp.ui.business.callback.ItemBusinessCallback
 import com.squareup.picasso.Picasso
 
 class BusinessAdapter(
     val businnesList: ArrayList<BusinessData>,
-    private val businessType: String
+    private val businessType: String,
+    val mCallBack: ItemBusinessCallback
 ): RecyclerView.Adapter<BusinessAdapter.BusinessViewHolder>() {
 
     override fun onCreateViewHolder(
@@ -26,7 +28,7 @@ class BusinessAdapter(
 
     override fun onBindViewHolder(holder: BusinessViewHolder, position: Int) {
         val business = businnesList[position]
-        holder.bind(business, businessType)
+        holder.bind(business, businessType, mCallBack)
     }
 
     override fun getItemCount(): Int {
@@ -35,11 +37,12 @@ class BusinessAdapter(
 
     class BusinessViewHolder(view: View): RecyclerView.ViewHolder(view) {
     private val binding= ItemBussineBinding.bind(view)
-            fun bind(business: BusinessData, businessType: String){
+            fun bind(business: BusinessData, businessType: String, mCallback: ItemBusinessCallback){
                 Picasso.get().load(business.url_img).into(binding.imgBusiness)
                 binding.tvBusinessName.text = business.nombre
                 binding.tvBusinessDesc.text = business.descripcion
                 binding.cardBusiness.setOnClickListener {
+                    mCallback.showAd()
                     val businessBundle = bundleOf(
                         "businessType" to businessType,
                         "businessData" to business,
